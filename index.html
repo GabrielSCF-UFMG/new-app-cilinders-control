@@ -20,7 +20,6 @@
     <!-- Manifest -->
     <link rel="manifest" href="manifest.json">
 
-    <!-- Ícone para iOS -->
     <!-- Ícones para Navegador e iOS -->
     <link rel="icon" type="image/png" href="brasao-cbmmg.png">
     <link rel="apple-touch-icon" href="brasao-cbmmg.png">
@@ -1119,9 +1118,14 @@
         <!-- Tab: Histórico -->
         <div class="tab-content" id="historico">
             <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-history"></i>
-                    <h2>Registros Recentes de Operação</h2>
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-history"></i>
+                        <h2>Registros Recentes de Operação</h2>
+                    </div>
+                    <button id="btnLimparHistorico" class="btn" style="background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%); color: white; padding: 8px 16px; font-size: 0.8rem; border-radius: var(--radius-md); box-shadow: none;">
+                        <i class="fas fa-trash-can"></i> Limpar Histórico
+                    </button>
                 </div>
                 <div id="historyList">
                     <div class="alert alert-info">
@@ -1134,7 +1138,7 @@
             <div class="card">
                 <div class="card-header">
                     <i class="fas fa-chart-bar"></i>
-                    <h2>Métricas Consolidadas</h2>
+                    <h2>Métricas Consoladas</h2>
                 </div>
                 <div id="statsDisplay">
                     <div class="form-row">
@@ -1233,6 +1237,9 @@
     <footer class="footer">
         <p>© 2026 CBMMG — Corpo de Bombeiros Militar de Minas Gerais</p>
         <p>Sistema de Gestão de Cilindros e Compressores v2.5</p>
+        <p style="margin-top: 10px; font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">
+            Desenvolvedor do App: Gabriel Souza Costa Ferreira &nbsp;|&nbsp; CPF: 150.020.846-99 &nbsp;|&nbsp; N° BM: 184.216-0
+        </p>
     </footer>
 
     <!-- Modal de Confirmação -->
@@ -1250,6 +1257,26 @@
                 <button class="btn btn-primary" onclick="closeModal()" style="width: 100%;">
                     <i class="fas fa-thumbs-up"></i>
                     Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Alerta de Drenagem Periódica -->
+    <div class="modal-overlay" id="modalDrain">
+        <div class="modal" style="border: 2px solid var(--accent);">
+            <div class="modal-header" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); border-bottom: 2.5px solid var(--accent);">
+                <h3><i class="fas fa-tint"></i> Alerta de Drenagem</h3>
+                <button class="modal-close" onclick="closeDrainModal()">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <div class="alert alert-warning" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; margin-bottom: 20px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; color: #ea580c; margin-bottom: 8px;"></i>
+                    <strong>ABRA A VÁLVULA DE DRENAGEM!</strong>
+                    <p>Já se passaram 5 minutos de operação contínua. Realize a purga do condensado do compressor imediatamente.</p>
+                </div>
+                <button class="btn btn-success" onclick="closeDrainModal()" style="width: 100%; background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
+                    <i class="fas fa-check"></i> Drenagem Realizada
                 </button>
             </div>
         </div>
@@ -1558,18 +1585,22 @@
             }
         }
 
-        // ===== LEMBRETE DE DRENAGEM RECORRENTE =====
+        // ===== LEMBRETE DE DRENAGEM RECORRENTE A CADA 5 MINUTOS =====
         function startDrainReminder() {
             if (drainInterval) clearInterval(drainInterval);
             drainInterval = setInterval(() => {
+                // 1. Mostrar o lembrete piscando na aba de registro
                 const reminder = document.getElementById('drainReminder');
                 if (reminder) {
                     reminder.classList.add('show');
-                    setTimeout(() => {
-                        reminder.classList.remove('show');
-                    }, 12000);
                 }
-            }, 300000); // Exibe a cada 5 minutos
+                
+                // 2. Disparar o modal de alerta invasivo na tela
+                showDrainModal();
+                
+                // 3. Tocar um aviso sonoro sintetizado nativo
+                tocarAlertaSonoro();
+            }, 300000); // Exibe a cada 5 minutos (300000 ms)
         }
 
         // ===== PARAR LEMBRETE DE DRENAGEM =====
@@ -1577,6 +1608,38 @@
             if (drainInterval) {
                 clearInterval(drainInterval);
                 drainInterval = null;
+            }
+        }
+
+        // ===== GERADOR DE AVISO SONORO SINTETIZADO (WEB AUDIO API) =====
+        function tocarAlertaSonoro() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (!audioCtx) return;
+                
+                const osc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // Frequência do bipe (Lá)
+                
+                // Padrão de bipe duplo e audível
+                gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.1);
+                gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime + 0.3);
+                gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.4);
+                
+                gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.5);
+                gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime + 0.7);
+                gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.8);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.2);
+            } catch (err) {
+                console.warn("Áudio não suportado ou bloqueado pelo navegador:", err);
             }
         }
 
@@ -1716,6 +1779,37 @@
             }
         }
 
+        // ===== CONTROLES DO MODAL DE ALERTA DE DRENAGEM =====
+        function showDrainModal() {
+            const modalDrain = document.getElementById('modalDrain');
+            if (modalDrain) {
+                modalDrain.classList.add('show');
+            }
+        }
+
+        function closeDrainModal() {
+            const modalDrain = document.getElementById('modalDrain');
+            if (modalDrain) {
+                modalDrain.classList.remove('show');
+            }
+            // Remove o lembrete piscando do painel
+            const reminder = document.getElementById('drainReminder');
+            if (reminder) {
+                reminder.classList.remove('show');
+            }
+        }
+
+        // ===== LIMPAR HISTÓRICO DE UTILIZAÇÕES LOCAL =====
+        function limparHistorico() {
+            if (confirm("Deseja realmente apagar o histórico de utilizações do aparelho? Essa ação removerá as informações de recarga exibidas neste celular/tablet.")) {
+                localStorage.removeItem('usageHistory');
+                usageHistory = [];
+                updateHistory();
+                updateStats();
+                showModal("Histórico local limpo com sucesso!");
+            }
+        }
+
         // ===== RECUPERAR SESSÃO DE FORMA SEGURA =====
         function restoreState() {
             const savedUsage = localStorage.getItem('currentUsage');
@@ -1743,9 +1837,20 @@
             }
         }
 
+        // Exposição global das funções do modal de drenagem
+        window.closeDrainModal = closeDrainModal;
+        window.showDrainModal = showDrainModal;
+
         // ===== CARREGAMENTO DE PÁGINA =====
         document.addEventListener('DOMContentLoaded', async () => {
             console.log('Iniciando o Controle de Compressor...');
+            
+            // Vinculação do botão de limpar histórico
+            const btnLimpar = document.getElementById("btnLimparHistorico");
+            if (btnLimpar) {
+                btnLimpar.addEventListener("click", limparHistorico);
+            }
+            
             await loadHistoryFromSupabase();
             restoreState();
         });
@@ -1830,3 +1935,6 @@
     </script>
 </body>
 </html>
+--- END OF FILE index.html ---
+
+Agora aplique as melhorias que pedi nesse código por favor. E conserte o botão "Limpar Histórico" que parece não estar funcionando.
