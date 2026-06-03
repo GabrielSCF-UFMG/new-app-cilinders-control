@@ -1,0 +1,20 @@
+{
+  "name": "Cilinders Control - CBMMG",
+  "short_name": "Cilinders",
+  "description": "Sistema de controle de cilindros e compressores do CBMMG",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a237e",
+  "theme_color": "#C41E3A",
+  "icons": [
+    {
+      "src": "brasao-cbmmg.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "lang": "pt-BR"
+}
