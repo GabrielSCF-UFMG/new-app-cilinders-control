@@ -25,11 +25,11 @@
 
     <style>
         :root {
-            --primary: #be123c;          /* Vermelho Bombeiro Premium */
-            --primary-dark: #881337;     /* Vermelho Escuro Carmim */
+            --primary: #be123c;          /* Vermelho CBMMG */
+            --primary-dark: #881337;     /* Vermelho Escuro */
             --accent: #d97706;           /* Dourado Operacional */
             --accent-light: #fef3c7;     /* Dourado Fundo Suave */
-            --navy: #0f172a;             /* Azul Escuro / Cinza Profundo */
+            --navy: #0f172a;             /* Azul Cinzento Escuro */
             --bg: #f8fafc;               /* Slate Light BG */
             --card-bg: #ffffff;
             --text-dark: #0f172a;
@@ -250,7 +250,7 @@
 
         .alert-info {
             background: #f0f9ff;
-            border-left: 4px solid var(--secondary, #0284c7);
+            border-left: 4px solid #0284c7;
             color: #0369a1;
             border-top: 1px solid #bae6fd;
             border-bottom: 1px solid #bae6fd;
@@ -605,7 +605,7 @@
             height: 20px;
             accent-color: var(--primary);
             flex-shrink: 0;
-            pointer-events: none; /* Prevents double trigger when clicking input itself */
+            pointer-events: none; /* Evita duplo acionamento ao clicar diretamente na checkbox */
         }
 
         .checklist-item.checked {
@@ -846,7 +846,15 @@
         const SUPABASE_URL = 'https://orxcnswoknkeczqxxvov.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yeGNuc3dva25rZWN6cXh4dm92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4OTY2MTgsImV4cCI6MjA5NDQ3MjYxOH0.RCCRGXI5wIWcWp1kP2QAjToipX6ENUpfx45rF55zMtM';
 
-        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Inicialização protegida para evitar falhas globais se a biblioteca CDN estiver bloqueada
+        let supabaseClient = null;
+        try {
+            if (window.supabase && typeof window.supabase.createClient === 'function') {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+        } catch (err) {
+            console.error("Erro ao instanciar cliente do Supabase:", err);
+        }
         window.supabaseClient = supabaseClient;
     </script>
 </head>
@@ -891,4 +899,247 @@
     <!-- Main Content -->
     <main class="main-content">
         <!-- Tab: Instruções -->
-        <div class="tab-content active" id
+        <div class="tab-content active" id="instrucoes">
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>PERIGO — AR COMPRIMIDO SOB ALTA PRESSÃO</strong><br>
+                    A operação inadequada do compressor pode resultar em acidentes graves. Sempre utilize EPIs e inspecione conexões e filtros antes de ligar o sistema.
+                </div>
+            </div>
+
+            <!-- Pressão Máxima -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h2>Limites de Pressão Recomendados</h2>
+                </div>
+                <div class="pressure-info">
+                    <div class="pressure-card pa">
+                        <h3>Cilindro PA (Incêndio)</h3>
+                        <div class="value">300 <span class="unit">BAR</span></div>
+                    </div>
+                    <div class="pressure-card mergulho">
+                        <h3>Cilindro de Mergulho</h3>
+                        <div class="value">200 <span class="unit">BAR</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Identificação de Mangueiras -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-water"></i>
+                    <h2>Identificação das Mangueiras de Carga</h2>
+                </div>
+                <div class="hose-indicator">
+                    <div class="hose red">
+                        <div class="hose-color"></div>
+                        <span>MANGUEIRA VERMELHA → Cilindros PA</span>
+                    </div>
+                    <div class="hose yellow">
+                        <div class="hose-color"></div>
+                        <span>MANGUEIRA AMARELA → Cilindros Mergulho</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instruções de Enchimento -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-list-ol"></i>
+                    <h2>Instruções Técnicas de Operação</h2>
+                </div>
+                <div class="instructions-list">
+                    <div class="instruction-item">
+                        <p>Inspecione visualmente o cilindro e as mangueiras. Conecte a <strong>mangueira de ar correta</strong> (Vermelha para PA / Amarela para Mergulho).</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p>Abra a <strong>válvula de drenagem de condensado</strong> do compressor de 1/4 a 1/2 volta.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p><strong>Feche</strong> a válvula de alívio presente no chicote da mangueira de carga.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p>Ligue o compressor e mantenha funcionando em vazio por aproximadamente <strong>30 segundos</strong> para purgar impurezas antes de iniciar a carga.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p>Com o compressor operando, feche a válvula de purga de ar, abra o registro da mangueira e em seguida o registro do cilindro para iniciar o enchimento.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p><strong>MONITORE CONTINUAMENTE</strong> os manômetros de carga e as temperaturas do compressor durante todo o período do processo.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p>Ao atingir a pressão nominal recomendada, <strong>desligue imediatamente o compressor</strong>.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p><strong>Feche</strong> o registro de passagem do cilindro e o registro de carga do chicote da mangueira.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p>Abra a válvula de alívio do chicote de carga para despressurizar o terminal <strong>antes de tentar desconectá-lo</strong> do cilindro.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <p>Abra a válvula de drenagem de condensado <strong>a cada 5 minutos</strong> de funcionamento contínuo e sempre ao término de cada recarga.</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning" style="margin-top: 12px; margin-bottom: 0;">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>TEMPO LIMITE DE OPERAÇÃO:</strong> Caso o compressor opere por <strong>1 hora cumulativa</strong> ou recarregue um lote de <strong>10 cilindros</strong>, desligue o sistema e aguarde o resfriamento por no mínimo <strong>1 hora</strong>.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Registro -->
+        <div class="tab-content" id="registro">
+            <!-- Status do Compressor -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h2>Status do Equipamento</h2>
+                </div>
+                <div class="usage-status" id="usageStatus">
+                    <i class="fas fa-check-circle status-icon available"></i>
+                    <div class="status-text">Disponível para Uso</div>
+                    <div class="status-details">Nenhuma operação ativa registrada.</div>
+                </div>
+            </div>
+
+            <!-- Timer de Uso -->
+            <div class="card" id="timerCard" style="display: none;">
+                <div class="card-header">
+                    <i class="fas fa-stopwatch"></i>
+                    <h2>Cronômetro de Operação</h2>
+                </div>
+                <div class="timer-display">
+                    <div class="timer-value" id="timerDisplay">00:00:00</div>
+                    <div class="timer-label">Tempo decorrido</div>
+                </div>
+                <div class="drain-reminder" id="drainReminder">
+                    <i class="fas fa-tint"></i>
+                    <strong>LEMBRETE PERIÓDICO:</strong> Abra a válvula de drenagem de condensado para remover o acúmulo de água!
+                </div>
+            </div>
+
+            <!-- Formulário de Início -->
+            <div class="card" id="startForm">
+                <div class="card-header">
+                    <i class="fas fa-play-circle"></i>
+                    <h2>Iniciar Nova Utilização</h2>
+                </div>
+                <form id="formStart">
+                    <div class="form-group">
+                        <label for="militarNome">Nome do Militar Operador</label>
+                        <input type="text" id="militarNome" placeholder="Ex: Sgt Batalha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="militarMatricula">Matrícula (CBMMG)</label>
+                        <input type="text" id="militarMatricula" placeholder="Ex: 123.456-7" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoCilindro">Classificação de Cilindro</label>
+                        <select id="tipoCilindro" required>
+                            <option value="">Selecione o tipo...</option>
+                            <option value="PA">Cilindro PA (Incêndio) — 300 BAR</option>
+                            <option value="Mergulho">Cilindro de Mergulho — 200 BAR</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="qtdCilindros">Quantidade de Cilindros</label>
+                            <input type="number" id="qtdCilindros" min="1" max="10" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pressaoInicial">Pressão Inicial do Lote (BAR)</label>
+                            <input type="number" id="pressaoInicial" min="0" max="300" placeholder="Ex: 50">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacaoInicio">Observações de Entrada (Opcional)</label>
+                        <textarea id="observacaoInicio" rows="2" placeholder="Descreva qualquer detalhe prévio do equipamento..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        Iniciar Operação
+                    </button>
+                </form>
+            </div>
+
+            <!-- Formulário de Finalização -->
+            <div class="card" id="endForm" style="display: none;">
+                <div class="card-header">
+                    <i class="fas fa-stop-circle"></i>
+                    <h2>Concluir Utilização</h2>
+                </div>
+                <form id="formEnd">
+                    <div class="form-group">
+                        <label for="pressaoFinal">Pressão Final Alcançada (BAR)</label>
+                        <input type="number" id="pressaoFinal" min="0" max="300" placeholder="Ex: 300" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacaoFim">Observações Finais (Opcional)</label>
+                        <textarea id="observacaoFim" rows="2" placeholder="Observações pós-recarga ou anomalias percebidas..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-bottom: 12px; display: block; font-weight: 600;">Checklist de Segurança Desmobilização</label>
+                        
+                        <div class="checklist-item" onclick="toggleCheck(this, event)">
+                            <input type="checkbox" id="check1">
+                            <span>Compressor desligado (chave rotativa e disjuntor)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)">
+                            <input type="checkbox" id="check2">
+                            <span>Registro da mangueira de carga fechado</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)">
+                            <input type="checkbox" id="check3">
+                            <span>Válvula de alívio do chicote aberta para descompressão</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)">
+                            <input type="checkbox" id="check4">
+                            <span>Válvula de drenagem principal ativada (purga completa)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)">
+                            <input type="checkbox" id="check5">
+                            <span>Mangueira desconectada e armazenada sem dobras</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success" style="width: 100%;">
+                        <i class="fas fa-check-circle"></i>
+                        Confirmar e Encerrar Registro
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tab: Histórico -->
+        <div class="tab-content" id="historico">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-history"></i>
+                    <h2>Registros Recentes de Operação</h2>
+                </div>
+                <div id="historyList">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Nenhum registro localizado no dispositivo local.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h2>Métricas Consoladas</h2>
+                </div>
+                <div id="statsDisplay">
+                    <div class="form-row">
+                        <div class="pressure-card pa">
+                            <h3>Total de Utilizações</h3>
+                            <div class="value" id="totalUsos">0</div>
+                        </div>
+                        <div class="pressure-card mergulho">
+                            <h3>Cilindros Carregados</h3>
+                            <div class="value
