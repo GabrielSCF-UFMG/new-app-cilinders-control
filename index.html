@@ -4,34 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Compressor - CBMMG</title>
-    
-    <!-- Google Fonts & FontAwesome -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#be123c">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Cilinders">
 
-    <!-- Manifest -->
     <link rel="manifest" href="manifest.json">
-
-    <!-- Ícones para Navegador e iOS -->
     <link rel="icon" type="image/png" href="brasao-cbmmg.png">
     <link rel="apple-touch-icon" href="brasao-cbmmg.png">
 
     <style>
         :root {
-            --primary: #be123c;          /* Vermelho CBMMG */
-            --primary-dark: #881337;     /* Vermelho Escuro */
-            --accent: #d97706;           /* Dourado Operacional */
-            --accent-light: #fef3c7;     /* Dourado Fundo Suave */
-            --navy: #0f172a;             /* Azul Cinzento Escuro */
-            --bg: #f8fafc;               /* Slate Light BG */
+            --primary: #be123c;
+            --primary-dark: #881337;
+            --accent: #d97706;
+            --accent-light: #fef3c7;
+            --navy: #0f172a;
+            --bg: #f8fafc;
             --card-bg: #ffffff;
             --text-dark: #0f172a;
             --text-normal: #334155;
@@ -45,8 +40,8 @@
             --danger-border: #fecaca;
             --radius-lg: 16px;
             --radius-md: 10px;
-            --shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-            --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+            --shadow: 0 4px 6px -1px rgba(15,23,42,0.05), 0 2px 4px -2px rgba(15,23,42,0.05);
+            --shadow-lg: 0 10px 25px -5px rgba(15,23,42,0.08), 0 8px 10px -6px rgba(15,23,42,0.08);
         }
 
         * {
@@ -64,10 +59,9 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: #ffffff;
+            color: #fff;
             padding: 24px 20px;
             box-shadow: var(--shadow-lg);
             position: sticky;
@@ -109,7 +103,6 @@
             margin-top: 2px;
         }
 
-        /* Navigation */
         .nav-tabs {
             display: flex;
             background: var(--card-bg);
@@ -135,24 +128,23 @@
             font-family: inherit;
         }
 
-        .nav-tab:hover {
-            color: var(--primary);
-            background-color: #fff1f2;
-        }
+            .nav-tab:hover {
+                color: var(--primary);
+                background-color: #fff1f2;
+            }
 
-        .nav-tab.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-            background-color: #fff1f2;
-        }
+            .nav-tab.active {
+                color: var(--primary);
+                border-bottom-color: var(--primary);
+                background-color: #fff1f2;
+            }
 
-        .nav-tab i {
-            display: block;
-            font-size: 1.2rem;
-            margin-bottom: 6px;
-        }
+            .nav-tab i {
+                display: block;
+                font-size: 1.2rem;
+                margin-bottom: 6px;
+            }
 
-        /* Main Content Wrapper */
         .main-content {
             max-width: 800px;
             margin: 0 auto;
@@ -161,25 +153,25 @@
 
         .tab-content {
             display: none;
-            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: slideUp 0.3s cubic-bezier(0.16,1,0.3,1);
         }
 
-        .tab-content.active {
-            display: block;
-        }
+            .tab-content.active {
+                display: block;
+            }
 
         @keyframes slideUp {
             from {
                 opacity: 0;
                 transform: translateY(12px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Cards */
         .card {
             background: var(--card-bg);
             border-radius: var(--radius-lg);
@@ -190,9 +182,9 @@
             transition: box-shadow 0.2s ease;
         }
 
-        .card:hover {
-            box-shadow: var(--shadow-lg);
-        }
+            .card:hover {
+                box-shadow: var(--shadow-lg);
+            }
 
         .card-header {
             display: flex;
@@ -203,18 +195,17 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .card-header i {
-            font-size: 1.4rem;
-            color: var(--primary);
-        }
+            .card-header i {
+                font-size: 1.4rem;
+                color: var(--primary);
+            }
 
-        .card-header h2 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
+            .card-header h2 {
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: var(--text-dark);
+            }
 
-        /* Alert Boxes */
         .alert {
             padding: 16px;
             border-radius: var(--radius-md);
@@ -226,10 +217,10 @@
             line-height: 1.4;
         }
 
-        .alert i {
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
+            .alert i {
+                font-size: 1.25rem;
+                flex-shrink: 0;
+            }
 
         .alert-danger {
             background: var(--danger-bg);
@@ -267,7 +258,6 @@
             border-right: 1px solid var(--success-border);
         }
 
-        /* Pressure Cards Info */
         .pressure-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -285,37 +275,36 @@
             overflow: hidden;
         }
 
-        .pressure-card.pa {
-            background: linear-gradient(135deg, var(--primary) 0%, #9f1239 100%);
-        }
+            .pressure-card.pa {
+                background: linear-gradient(135deg, var(--primary) 0%, #9f1239 100%);
+            }
 
-        .pressure-card.mergulho {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-        }
+            .pressure-card.mergulho {
+                background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            }
 
-        .pressure-card h3 {
-            font-size: 0.8rem;
-            margin-bottom: 6px;
-            opacity: 0.85;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 700;
-        }
+            .pressure-card h3 {
+                font-size: 0.8rem;
+                margin-bottom: 6px;
+                opacity: 0.85;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                font-weight: 700;
+            }
 
-        .pressure-card .value {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            line-height: 1;
-        }
+            .pressure-card .value {
+                font-size: 2.2rem;
+                font-weight: 800;
+                letter-spacing: -0.05em;
+                line-height: 1;
+            }
 
-        .pressure-card .unit {
-            font-size: 0.9rem;
-            font-weight: 600;
-            opacity: 0.9;
-        }
+            .pressure-card .unit {
+                font-size: 0.9rem;
+                font-weight: 600;
+                opacity: 0.9;
+            }
 
-        /* Hose Indicator */
         .hose-indicator {
             display: flex;
             gap: 16px;
@@ -335,13 +324,13 @@
             box-shadow: var(--shadow);
         }
 
-        .hose.red {
-            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-        }
+            .hose.red {
+                background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            }
 
-        .hose.yellow {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
+            .hose.yellow {
+                background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            }
 
         .hose-color {
             width: 24px;
@@ -351,10 +340,14 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
         }
 
-        .hose.red .hose-color { background-color: #ef4444; }
-        .hose.yellow .hose-color { background-color: #fbbf24; }
+        .hose.red .hose-color {
+            background-color: #ef4444;
+        }
 
-        /* Instructions List */
+        .hose.yellow .hose-color {
+            background-color: #fbbf24;
+        }
+
         .instructions-list {
             counter-reset: step;
         }
@@ -370,68 +363,67 @@
             border: 1px solid var(--border);
         }
 
-        .instruction-item::before {
-            counter-increment: step;
-            content: counter(step);
-            background: var(--primary);
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-            box-shadow: 0 2px 4px rgba(190, 18, 60, 0.25);
-        }
+            .instruction-item::before {
+                counter-increment: step;
+                content: counter(step);
+                background: var(--primary);
+                color: white;
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 0.85rem;
+                flex-shrink: 0;
+                box-shadow: 0 2px 4px rgba(190,18,60,0.25);
+            }
 
-        .instruction-item p {
-            line-height: 1.5;
-            color: var(--text-normal);
-            font-size: 0.9rem;
-        }
+            .instruction-item p {
+                line-height: 1.5;
+                color: var(--text-normal);
+                font-size: 0.9rem;
+            }
 
-        .instruction-item strong {
-            color: var(--primary);
-            font-weight: 700;
-        }
+            .instruction-item strong {
+                color: var(--primary);
+                font-weight: 700;
+            }
 
-        /* Form Styles */
         .form-group {
             margin-bottom: 18px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 0.85rem;
-        }
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                color: var(--text-dark);
+                font-size: 0.85rem;
+            }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-md);
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            background-color: #ffffff;
-            transition: all 0.20s ease-in-out;
-            font-family: inherit;
-        }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+                padding: 12px 16px;
+                border: 1.5px solid var(--border);
+                border-radius: var(--radius-md);
+                font-size: 0.95rem;
+                color: var(--text-dark);
+                background-color: #fff;
+                transition: all 0.2s ease-in-out;
+                font-family: inherit;
+            }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3.5px rgba(190, 18, 60, 0.12);
-        }
+                .form-group input:focus,
+                .form-group select:focus,
+                .form-group textarea:focus {
+                    outline: none;
+                    border-color: var(--primary);
+                    box-shadow: 0 0 0 3.5px rgba(190,18,60,0.12);
+                }
 
         .form-row {
             display: grid;
@@ -439,7 +431,6 @@
             gap: 16px;
         }
 
-        /* Buttons */
         .btn {
             padding: 14px 28px;
             border: none;
@@ -463,10 +454,10 @@
             border: 1px solid var(--primary-dark);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-1.5px);
-            box-shadow: 0 6px 20px rgba(190, 18, 60, 0.3);
-        }
+            .btn-primary:hover {
+                transform: translateY(-1.5px);
+                box-shadow: 0 6px 20px rgba(190,18,60,0.3);
+            }
 
         .btn-success {
             background: linear-gradient(135deg, #10b981 0%, #047857 100%);
@@ -474,12 +465,35 @@
             border: 1px solid #047857;
         }
 
-        .btn-success:hover {
-            transform: translateY(-1.5px);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+            .btn-success:hover {
+                transform: translateY(-1.5px);
+                box-shadow: 0 6px 20px rgba(16,185,129,0.3);
+            }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            border: 1px solid #d97706;
+            flex: 1;
         }
 
-        /* Usage Status Dashboard */
+            .btn-warning:hover {
+                transform: translateY(-1.5px);
+                box-shadow: 0 6px 20px rgba(245,158,11,0.35);
+            }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%);
+            color: white;
+            border: 1px solid #b91c1c;
+            flex: 1;
+        }
+
+            .btn-danger:hover {
+                transform: translateY(-1.5px);
+                box-shadow: 0 6px 20px rgba(239,68,68,0.35);
+            }
+
         .usage-status {
             text-align: center;
             padding: 24px;
@@ -493,18 +507,23 @@
             margin-bottom: 12px;
         }
 
-        .status-icon.available {
-            color: var(--success);
-        }
+            .status-icon.available {
+                color: var(--success);
+            }
 
-        .status-icon.in-use {
-            color: var(--accent);
-            animation: pulse 1.8s infinite;
-        }
+            .status-icon.in-use {
+                color: var(--accent);
+                animation: pulse 1.8s infinite;
+            }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
         }
 
         .status-text {
@@ -520,9 +539,8 @@
             font-size: 0.9rem;
         }
 
-        /* History Cards */
         .history-item {
-            background: #ffffff;
+            background: #fff;
             border-radius: var(--radius-md);
             padding: 18px;
             margin-bottom: 14px;
@@ -566,6 +584,12 @@
             border: 1px solid #fde68a;
         }
 
+        .badge-interrupted {
+            background: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
         .history-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -574,14 +598,13 @@
             color: var(--text-normal);
         }
 
-        .history-details i {
-            color: var(--primary);
-            margin-right: 6px;
-            width: 14px;
-            text-align: center;
-        }
+            .history-details i {
+                color: var(--primary);
+                margin-right: 6px;
+                width: 14px;
+                text-align: center;
+            }
 
-        /* Modernized Safety Checklist */
         .checklist-item {
             display: flex;
             align-items: center;
@@ -596,29 +619,28 @@
             user-select: none;
         }
 
-        .checklist-item:hover {
-            background: #f1f5f9;
-            border-color: #cbd5e1;
-        }
+            .checklist-item:hover {
+                background: #f1f5f9;
+                border-color: #cbd5e1;
+            }
 
-        .checklist-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--primary);
-            flex-shrink: 0;
-            pointer-events: none; /* Evita duplo acionamento ao clicar diretamente na checkbox */
-        }
+            .checklist-item input[type="checkbox"] {
+                width: 20px;
+                height: 20px;
+                accent-color: var(--primary);
+                flex-shrink: 0;
+                pointer-events: none;
+            }
 
-        .checklist-item.checked {
-            background: var(--success-bg);
-            border-color: var(--success-border);
-            color: #065f46;
-        }
+            .checklist-item.checked {
+                background: var(--success-bg);
+                border-color: var(--success-border);
+                color: #065f46;
+            }
 
-        /* Timer Display */
         .timer-display {
             background: linear-gradient(135deg, var(--navy) 0%, #1e293b 100%);
-            color: #ffffff;
+            color: #fff;
             padding: 24px;
             border-radius: var(--radius-md);
             text-align: center;
@@ -634,7 +656,7 @@
             font-family: 'Share Tech Mono', 'Courier New', monospace;
             letter-spacing: 0.05em;
             color: #38bdf8;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+            text-shadow: 0 0 10px rgba(56,189,248,0.4);
             line-height: 1.1;
         }
 
@@ -647,7 +669,6 @@
             font-weight: 600;
         }
 
-        /* Drain Reminder */
         .drain-reminder {
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             color: white;
@@ -660,18 +681,25 @@
             border: 1px solid #ea580c;
         }
 
-        .drain-reminder.show {
-            display: block;
-            animation: shake 0.6s ease-in-out;
-        }
+            .drain-reminder.show {
+                display: block;
+                animation: shake 0.6s ease-in-out;
+            }
 
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            15%, 45%, 75% { transform: translateX(-6px); }
-            30%, 60%, 90% { transform: translateX(6px); }
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            15%, 45%, 75% {
+                transform: translateX(-6px);
+            }
+
+            30%, 60%, 90% {
+                transform: translateX(6px);
+            }
         }
 
-        /* Sync Status Indicator */
         .sync-status {
             position: fixed;
             bottom: 20px;
@@ -689,60 +717,50 @@
             transition: all 0.3s ease;
         }
 
-        .sync-status.online {
-            background: var(--success-bg);
-            color: #065f46;
-            border-color: var(--success-border);
-        }
+            .sync-status.online {
+                background: var(--success-bg);
+                color: #065f46;
+                border-color: var(--success-border);
+            }
 
-        .sync-status.offline {
-            background: var(--danger-bg);
-            color: #991b1b;
-            border-color: var(--danger-border);
-        }
+            .sync-status.offline {
+                background: var(--danger-bg);
+                color: #991b1b;
+                border-color: var(--danger-border);
+            }
 
-        .sync-status i {
-            font-size: 0.85rem;
-        }
-
-        /* ==========================================
-        FOOTER PADRÃO CBMMG
-        ========================================== */
+            .sync-status i {
+                font-size: 0.85rem;
+            }
 
         .footer {
-          width: 100%;
-          max-width: 1200px;
-          margin: 28px auto 20px;
-          padding: 18px 24px;
-          text-align: center;
-        
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          color: #172554;
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 1.6;
-        }
-        
-        .footer p {
-          margin: 4px 0;
-          font-family: inherit;
-          font-size: inherit;
-          font-weight: inherit;
-          color: inherit;
-        }
-        
-        .footer p:first-child {
-          font-weight: 700;
-        }
-        
-        .footer-dev {
-          margin-top: 10px !important;
-          font-size: 12px !important;
-          color: #334155 !important;
-          font-weight: 600 !important;
+            width: 100%;
+            max-width: 1200px;
+            margin: 28px auto 20px;
+            padding: 18px 24px;
+            text-align: center;
+            font-family: "Plus Jakarta Sans", Arial, sans-serif;
+            color: #172554;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.6;
         }
 
-        /* Modal Overlay & Card styling */
+            .footer p {
+                margin: 4px 0;
+            }
+
+                .footer p:first-child {
+                    font-weight: 700;
+                }
+
+        .footer-dev {
+            margin-top: 10px !important;
+            font-size: 12px !important;
+            color: #334155 !important;
+            font-weight: 600 !important;
+        }
+
         .modal-overlay {
             display: none;
             position: fixed;
@@ -750,7 +768,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15,23,42,0.6);
             backdrop-filter: blur(4px);
             z-index: 2000;
             align-items: center;
@@ -760,20 +778,20 @@
             transition: opacity 0.25s ease-in-out;
         }
 
-        .modal-overlay.show {
-            display: flex;
-            opacity: 1;
-        }
+            .modal-overlay.show {
+                display: flex;
+                opacity: 1;
+            }
 
         .modal {
-            background: #ffffff;
+            background: #fff;
             border-radius: var(--radius-lg);
             max-width: 480px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             transform: scale(0.92);
-            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
             border: 1px solid var(--border);
         }
@@ -792,10 +810,10 @@
             border-bottom: 2.5px solid var(--accent);
         }
 
-        .modal-header h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
+            .modal-header h3 {
+                font-size: 1.1rem;
+                font-weight: 700;
+            }
 
         .modal-close {
             background: transparent;
@@ -807,60 +825,14 @@
             transition: opacity 0.15s;
         }
 
-        .modal-close:hover {
-            opacity: 1;
-        }
+            .modal-close:hover {
+                opacity: 1;
+            }
 
         .modal-body {
             padding: 24px;
         }
 
-        /* Responsive Settings */
-        @media (max-width: 600px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 12px;
-            }
-
-            .header-text h1 {
-                font-size: 1.25rem;
-            }
-
-            .pressure-info {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .hose-indicator {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .nav-tab {
-                padding: 12px 6px;
-                font-size: 0.72rem;
-            }
-
-            .nav-tab i {
-                font-size: 1.1rem;
-                margin-bottom: 4px;
-            }
-
-            .sync-status {
-                bottom: 12px;
-                left: 12px;
-                padding: 6px 12px;
-                font-size: 0.7rem;
-            }
-        }
-
-        /* ===== PAUSA / RETOMADA ===== */
         .timer-display.paused {
             background: linear-gradient(135deg, #78350f 0%, #451a03 100%);
             box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
@@ -868,7 +840,7 @@
 
             .timer-display.paused .timer-value {
                 color: #fbbf24;
-                text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+                text-shadow: 0 0 10px rgba(251,191,36,0.4);
             }
 
             .timer-display.paused .timer-label::after {
@@ -882,30 +854,6 @@
             gap: 12px;
             margin-bottom: 16px;
         }
-
-        .btn-warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-            border: 1px solid #d97706;
-            flex: 1;
-        }
-
-            .btn-warning:hover {
-                transform: translateY(-1.5px);
-                box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
-            }
-
-        .btn-danger {
-            background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%);
-            color: white;
-            border: 1px solid #b91c1c;
-            flex: 1;
-        }
-
-            .btn-danger:hover {
-                transform: translateY(-1.5px);
-                box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
-            }
 
         /* ===== CAMPOS DE PRESSÃO POR CILINDRO ===== */
         .cylinder-pressures-wrapper {
@@ -948,9 +896,16 @@
                 .cylinder-pressure-row input:focus {
                     outline: none;
                     border-color: var(--primary);
-                    box-shadow: 0 0 0 3px rgba(190, 18, 60, 0.1);
+                    box-shadow: 0 0 0 3px rgba(190,18,60,0.1);
                 }
 
+                .cylinder-pressure-row input[readonly] {
+                    background: #e2e8f0;
+                    color: var(--text-muted);
+                    cursor: not-allowed;
+                }
+
+        /* Badge numérico do cilindro */
         .cylinder-badge {
             width: 28px;
             height: 28px;
@@ -965,7 +920,21 @@
             flex-shrink: 0;
         }
 
-        /* ===== OBSERVAÇÕES NO HISTÓRICO ===== */
+        /* Rótulo da seção de pressão inicial no formulário de início */
+        .pressao-inicial-section {
+            margin-top: 4px;
+        }
+
+            .pressao-inicial-section .cylinder-pressure-row {
+                background: #fff7f7;
+                border-color: #fecaca;
+            }
+
+            .pressao-inicial-section .cylinder-badge {
+                background: var(--primary-dark);
+            }
+
+        /* Observações no histórico */
         .history-obs {
             margin-top: 10px;
             padding-top: 10px;
@@ -988,7 +957,7 @@
                 margin-top: 2px;
             }
 
-        /* ===== PRESSÕES POR CILINDRO NO HISTÓRICO ===== */
+        /* Chips de cilindro */
         .history-cylinders {
             margin-top: 8px;
             display: flex;
@@ -1006,7 +975,28 @@
             color: var(--primary);
         }
 
-        /* ===== BOTÃO PDF ===== */
+            .cylinder-chip.initial {
+                background: #f0f9ff;
+                border-color: #bae6fd;
+                color: #0369a1;
+            }
+
+        /* Seção de pressões no histórico */
+        .history-pressures {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .history-pressures-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
         .btn-pdf {
             background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
             color: white;
@@ -1026,10 +1016,57 @@
 
             .btn-pdf:hover {
                 transform: translateY(-1px);
-                box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);
+                box-shadow: 0 4px 12px rgba(3,105,161,0.3);
             }
 
-        /* ===== PRINT STYLES ===== */
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .header-text h1 {
+                font-size: 1.25rem;
+            }
+
+            .pressure-info {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .hose-indicator {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .nav-tab {
+                padding: 12px 6px;
+                font-size: 0.72rem;
+            }
+
+                .nav-tab i {
+                    font-size: 1.1rem;
+                    margin-bottom: 4px;
+                }
+
+            .sync-status {
+                bottom: 12px;
+                left: 12px;
+                padding: 6px 12px;
+                font-size: 0.7rem;
+            }
+
+            .history-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media print {
             body * {
                 visibility: hidden !important;
@@ -1131,6 +1168,12 @@
                 margin: 3px 3px 0 0;
             }
 
+                .print-chip.initial {
+                    background: #f0f9ff;
+                    border-color: #bae6fd;
+                    color: #0369a1;
+                }
+
             .print-obs {
                 background: #f8fafc;
                 border-left: 3px solid #be123c;
@@ -1149,31 +1192,56 @@
                 color: #94a3b8;
                 text-align: center;
             }
-        }
 
+            .print-pressures-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px 20px;
+                margin-bottom: 8px;
+            }
+
+            .print-pressure-row {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                background: #f8fafc;
+                padding: 4px 8px;
+                border-radius: 6px;
+                border: 1px solid #e2e8f0;
+            }
+
+                .print-pressure-row .cil-num {
+                    background: #be123c;
+                    color: white;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 10px;
+                    font-weight: 800;
+                    flex-shrink: 0;
+                }
+        }
     </style>
 
-    <!-- ========== SUPABASE SDK ========== -->
+    <!-- SUPABASE SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Configurações do Banco de Dados do Supabase
         const SUPABASE_URL = 'https://orxcnswoknkeczqxxvov.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yeGNuc3dva25rZWN6cXh4dm92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4OTY2MTgsImV4cCI6MjA5NDQ3MjYxOH0.RCCRGXI5wIWcWp1kP2QAjToipX6ENUpfx45rF55zMtM';
-
-        // Inicialização protegida para evitar falhas globais se a biblioteca CDN estiver bloqueada
         let supabaseClient = null;
         try {
             if (window.supabase && typeof window.supabase.createClient === 'function') {
                 supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             }
-        } catch (err) {
-            console.error("Erro ao instanciar cliente do Supabase:", err);
-        }
+        } catch (err) { console.error("Erro ao instanciar Supabase:", err); }
         window.supabaseClient = supabaseClient;
     </script>
 </head>
 <body>
-    <!-- Header -->
+
     <header class="header">
         <div class="header-content">
             <img src="brasao-cbmmg.png" class="brasao" alt="Brasão CBMMG" />
@@ -1184,35 +1252,20 @@
         </div>
     </header>
 
-    <!-- Navigation -->
     <nav class="nav-tabs">
-        <button class="nav-tab active" data-tab="instrucoes">
-            <i class="fas fa-book"></i>
-            Instruções
-        </button>
-        <button class="nav-tab" data-tab="registro">
-            <i class="fas fa-clipboard-check"></i>
-            Registro
-        </button>
-        <button class="nav-tab" data-tab="historico">
-            <i class="fas fa-history"></i>
-            Histórico
-        </button>
-        <button class="nav-tab" data-tab="seguranca">
-            <i class="fas fa-shield-alt"></i>
-            Segurança
-        </button>
+        <button class="nav-tab active" data-tab="instrucoes"><i class="fas fa-book"></i>Instruções</button>
+        <button class="nav-tab" data-tab="registro"><i class="fas fa-clipboard-check"></i>Registro</button>
+        <button class="nav-tab" data-tab="historico"><i class="fas fa-history"></i>Histórico</button>
+        <button class="nav-tab" data-tab="seguranca"><i class="fas fa-shield-alt"></i>Segurança</button>
     </nav>
 
-    <!-- Sync Status Indicator -->
     <div class="sync-status online" id="syncStatus">
-        <i class="fas fa-cloud"></i>
-        <span>Sincronizando...</span>
+        <i class="fas fa-cloud"></i><span>Sincronizando...</span>
     </div>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Tab: Instruções -->
+
+        <!-- ==================== Tab: Instruções ==================== -->
         <div class="tab-content active" id="instrucoes">
             <div class="alert alert-danger">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -1221,99 +1274,45 @@
                     A operação inadequada do compressor pode resultar em acidentes graves. Sempre utilize EPIs e inspecione conexões e filtros antes de ligar o sistema.
                 </div>
             </div>
-
-            <!-- Pressão Máxima -->
             <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <h2>Limites de Pressão Recomendados</h2>
-                </div>
+                <div class="card-header"><i class="fas fa-tachometer-alt"></i><h2>Limites de Pressão Recomendados</h2></div>
                 <div class="pressure-info">
-                    <div class="pressure-card pa">
-                        <h3>Cilindro PA (Incêndio)</h3>
-                        <div class="value">300 <span class="unit">BAR</span></div>
-                    </div>
-                    <div class="pressure-card mergulho">
-                        <h3>Cilindro de Mergulho</h3>
-                        <div class="value">200 <span class="unit">BAR</span></div>
-                    </div>
+                    <div class="pressure-card pa"><h3>Cilindro PA (Incêndio)</h3><div class="value">300 <span class="unit">BAR</span></div></div>
+                    <div class="pressure-card mergulho"><h3>Cilindro de Mergulho</h3><div class="value">200 <span class="unit">BAR</span></div></div>
                 </div>
             </div>
-
-            <!-- Identificação de Mangueiras -->
             <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-water"></i>
-                    <h2>Identificação das Mangueiras de Carga</h2>
-                </div>
+                <div class="card-header"><i class="fas fa-water"></i><h2>Identificação das Mangueiras de Carga</h2></div>
                 <div class="hose-indicator">
-                    <div class="hose red">
-                        <div class="hose-color"></div>
-                        <span>MANGUEIRA VERMELHA → Cilindros PA</span>
-                    </div>
-                    <div class="hose yellow">
-                        <div class="hose-color"></div>
-                        <span>MANGUEIRA AMARELA → Cilindros Mergulho</span>
-                    </div>
+                    <div class="hose red"><div class="hose-color"></div><span>MANGUEIRA VERMELHA → Cilindros PA</span></div>
+                    <div class="hose yellow"><div class="hose-color"></div><span>MANGUEIRA AMARELA → Cilindros Mergulho</span></div>
                 </div>
             </div>
-
-            <!-- Instruções de Enchimento -->
             <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-list-ol"></i>
-                    <h2>Instruções Técnicas de Operação</h2>
-                </div>
+                <div class="card-header"><i class="fas fa-list-ol"></i><h2>Instruções Técnicas de Operação</h2></div>
                 <div class="instructions-list">
-                    <div class="instruction-item">
-                        <p>Inspecione visualmente o cilindro e as mangueiras. Conecte a <strong>mangueira de ar correta</strong> (Vermelha para PA / Amarela para Mergulho).</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p>Abra a <strong>válvula de drenagem de condensado</strong> do compressor de 1/4 a 1/2 volta.</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p><strong>Feche</strong> a válvula de alívio presente no chicote da mangueira de carga.</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p>Ligue o compressor e mantenha funcionando em vazio por aproximadamente <strong>30 segundos</strong> para purgar impurezas antes de iniciar a carga.</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p>Com o compressor operando, feche a válvula de purga de ar, abra o registro da mangueira e em seguida o registro do cilindro para iniciar o enchimento.</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p><strong>MONITORE CONTINUAMENTE</strong> os manômetros de carga e as temperaturas do compressor durante todo o período do processo.</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p>Ao atingir a pressão nominal recomendada, <strong>desligue imediatamente o compressor</strong>.</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p><strong>Feche</strong> o registro de passagem do cilindro e o registro de carga do chicote da mangueira.</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p>Abra a válvula de alívio do chicote de carga para despressurizar o terminal <strong>antes de tentar desconectá-lo</strong> do cilindro.</p>
-                    </div>
-                    <div class="instruction-item">
-                        <p>Abra a válvula de drenagem de condensado <strong>a cada 5 minutos</strong> de funcionamento contínuo e sempre ao término de cada recarga.</p>
-                    </div>
+                    <div class="instruction-item"><p>Inspecione visualmente o cilindro e as mangueiras. Conecte a <strong>mangueira de ar correta</strong> (Vermelha para PA / Amarela para Mergulho).</p></div>
+                    <div class="instruction-item"><p>Abra a <strong>válvula de drenagem de condensado</strong> do compressor de 1/4 a 1/2 volta.</p></div>
+                    <div class="instruction-item"><p><strong>Feche</strong> a válvula de alívio presente no chicote da mangueira de carga.</p></div>
+                    <div class="instruction-item"><p>Ligue o compressor e mantenha funcionando em vazio por aproximadamente <strong>30 segundos</strong>.</p></div>
+                    <div class="instruction-item"><p>Com o compressor operando, feche a válvula de purga, abra o registro da mangueira e em seguida o registro do cilindro.</p></div>
+                    <div class="instruction-item"><p><strong>MONITORE CONTINUAMENTE</strong> os manômetros durante todo o processo.</p></div>
+                    <div class="instruction-item"><p>Ao atingir a pressão nominal, <strong>desligue imediatamente o compressor</strong>.</p></div>
+                    <div class="instruction-item"><p><strong>Feche</strong> o registro de passagem do cilindro e o registro do chicote.</p></div>
+                    <div class="instruction-item"><p>Abra a válvula de alívio do chicote para despressurizar <strong>antes de desconectar</strong>.</p></div>
+                    <div class="instruction-item"><p>Abra a válvula de drenagem de condensado <strong>a cada 5 minutos</strong> e ao término de cada recarga.</p></div>
                 </div>
-
-                <div class="alert alert-warning" style="margin-top: 12px; margin-bottom: 0;">
+                <div class="alert alert-warning" style="margin-top:12px;margin-bottom:0;">
                     <i class="fas fa-clock"></i>
-                    <div>
-                        <strong>TEMPO LIMITE DE OPERAÇÃO:</strong> Caso o compressor opere por <strong>1 hora cumulativa</strong> ou recarregue um lote de <strong>10 cilindros</strong>, desligue o sistema e aguarde o resfriamento por no mínimo <strong>1 hora</strong>.
-                    </div>
+                    <div><strong>TEMPO LIMITE:</strong> Após <strong>1 hora cumulativa</strong> ou <strong>10 cilindros</strong>, desligue e aguarde resfriamento por no mínimo <strong>1 hora</strong>.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Tab: Registro -->
+        <!-- ==================== Tab: Registro ==================== -->
         <div class="tab-content" id="registro">
-            <!-- Status do Compressor -->
             <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-info-circle"></i>
-                    <h2>Status do Equipamento</h2>
-                </div>
+                <div class="card-header"><i class="fas fa-info-circle"></i><h2>Status do Equipamento</h2></div>
                 <div class="usage-status" id="usageStatus">
                     <i class="fas fa-check-circle status-icon available"></i>
                     <div class="status-text">Disponível para Uso</div>
@@ -1321,12 +1320,8 @@
                 </div>
             </div>
 
-            <!-- Timer de Uso -->
-            <div class="card" id="timerCard" style="display: none;">
-                <div class="card-header">
-                    <i class="fas fa-stopwatch"></i>
-                    <h2>Cronômetro de Operação</h2>
-                </div>
+            <div class="card" id="timerCard" style="display:none;">
+                <div class="card-header"><i class="fas fa-stopwatch"></i><h2>Cronômetro de Operação</h2></div>
                 <div class="timer-display" id="timerDisplay">
                     <div class="timer-value" id="timerValue">00:00:00</div>
                     <div class="timer-label">Tempo decorrido</div>
@@ -1336,22 +1331,14 @@
                     <strong>LEMBRETE PERIÓDICO:</strong> Abra a válvula de drenagem de condensado!
                 </div>
                 <div class="pause-btn-row">
-                    <button class="btn btn-warning" id="btnPause" onclick="togglePause()">
-                        <i class="fas fa-pause"></i> Pausar (Troca)
-                    </button>
-                    <button class="btn btn-danger" id="btnEmergency" onclick="emergencyStop()">
-                        <i class="fas fa-hand"></i> Parada Emergência
-                    </button>
+                    <button class="btn btn-warning" id="btnPause" onclick="togglePause()"><i class="fas fa-pause"></i> Pausar (Troca)</button>
+                    <button class="btn btn-danger" id="btnEmergency" onclick="emergencyStop()"><i class="fas fa-hand"></i> Parada Emergência</button>
                 </div>
             </div>
 
-
             <!-- Formulário de Início -->
             <div class="card" id="startForm">
-                <div class="card-header">
-                    <i class="fas fa-play-circle"></i>
-                    <h2>Iniciar Nova Utilização</h2>
-                </div>
+                <div class="card-header"><i class="fas fa-play-circle"></i><h2>Iniciar Nova Utilização</h2></div>
                 <form id="formStart">
                     <div class="form-group">
                         <label for="militarNome">Nome do Militar Operador</label>
@@ -1369,188 +1356,88 @@
                             <option value="Mergulho">Cilindro de Mergulho — 200 BAR</option>
                         </select>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="qtdCilindros">Quantidade de Cilindros</label>
-                            <input type="number" id="qtdCilindros" min="1" max="10" value="1" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pressaoInicial">Pressão Inicial do Lote (BAR)</label>
-                            <input type="number" id="pressaoInicial" min="0" max="300" placeholder="Ex: 50">
+                    <div class="form-group">
+                        <label for="qtdCilindros">Quantidade de Cilindros</label>
+                        <input type="number" id="qtdCilindros" min="1" max="10" value="1" required>
+                    </div>
+
+                    <!-- ✅ PRESSÕES INICIAIS POR CILINDRO (dinâmico) -->
+                    <div class="form-group">
+                        <label>Pressão Inicial por Cilindro (BAR)</label>
+                        <div class="cylinder-pressures-wrapper pressao-inicial-section" id="pressaoInicialContainer">
+                            <!-- Gerado dinamicamente -->
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="observacaoInicio">Observações de Entrada (Opcional)</label>
                         <textarea id="observacaoInicio" rows="2" placeholder="Descreva qualquer detalhe prévio do equipamento..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-play"></i>
-                        Iniciar Operação
-                    </button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-play"></i> Iniciar Operação</button>
                 </form>
             </div>
 
-            <!-- Formulário de Finalização -->
-            <div class="card" id="endForm" style="display: none;">
-                <div class="card-header">
-                    <i class="fas fa-stop-circle"></i>
-                    <h2>Concluir Utilização</h2>
-                </div>
+            <!-- Formulário de Encerramento -->
+            <div class="card" id="endForm" style="display:none;">
+                <div class="card-header"><i class="fas fa-stop-circle"></i><h2>Concluir Utilização</h2></div>
                 <form id="formEnd">
-                    <!-- Pressões individuais geradas via JS -->
                     <div class="form-group">
                         <label>Pressão Final por Cilindro (BAR)</label>
                         <div class="cylinder-pressures-wrapper" id="cylinderPressuresContainer"></div>
                     </div>
-
                     <div class="form-group">
                         <label for="observacaoFim">Observações Finais (Opcional)</label>
                         <textarea id="observacaoFim" rows="2" placeholder="Observações pós-recarga ou anomalias percebidas..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label style="margin-bottom: 12px; display: block; font-weight: 600;">Checklist de Segurança — Desmobilização</label>
-                        <div class="checklist-item" onclick="toggleCheck(this, event)">
-                            <input type="checkbox" id="check1">
-                            <span>Compressor desligado (chave rotativa e disjuntor)</span>
-                        </div>
-                        <div class="checklist-item" onclick="toggleCheck(this, event)">
-                            <input type="checkbox" id="check2">
-                            <span>Registro da mangueira de carga fechado</span>
-                        </div>
-                        <div class="checklist-item" onclick="toggleCheck(this, event)">
-                            <input type="checkbox" id="check3">
-                            <span>Válvula de alívio do chicote aberta para descompressão</span>
-                        </div>
-                        <div class="checklist-item" onclick="toggleCheck(this, event)">
-                            <input type="checkbox" id="check4">
-                            <span>Válvula de drenagem principal ativada (purga completa)</span>
-                        </div>
-                        <div class="checklist-item" onclick="toggleCheck(this, event)">
-                            <input type="checkbox" id="check5">
-                            <span>Mangueira desconectada e armazenada sem dobras</span>
-                        </div>
+                        <label style="margin-bottom:12px;display:block;font-weight:600;">Checklist de Segurança — Desmobilização</label>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)"><input type="checkbox" id="check1"><span>Compressor desligado (chave rotativa e disjuntor)</span></div>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)"><input type="checkbox" id="check2"><span>Registro da mangueira de carga fechado</span></div>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)"><input type="checkbox" id="check3"><span>Válvula de alívio do chicote aberta para descompressão</span></div>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)"><input type="checkbox" id="check4"><span>Válvula de drenagem principal ativada (purga completa)</span></div>
+                        <div class="checklist-item" onclick="toggleCheck(this, event)"><input type="checkbox" id="check5"><span>Mangueira desconectada e armazenada sem dobras</span></div>
                     </div>
-                    <button type="submit" class="btn btn-success" style="width: 100%;">
-                        <i class="fas fa-check-circle"></i>
-                        Confirmar e Encerrar Registro
-                    </button>
+                    <button type="submit" class="btn btn-success" style="width:100%;"><i class="fas fa-check-circle"></i> Confirmar e Encerrar Registro</button>
                 </form>
             </div>
-
         </div>
-        <!-- ✅ FECHAMENTO CORRETO do #registro AQUI, antes do histórico -->
-        <!-- Tab: Histórico -->                             
+
+        <!-- ==================== Tab: Histórico ==================== -->
         <div class="tab-content" id="historico">
             <div class="card">
-                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%;">
-                    <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="card-header" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;width:100%;">
+                    <div style="display:flex;align-items:center;gap:12px;">
                         <i class="fas fa-history"></i>
                         <h2>Registros Recentes de Operação</h2>
                     </div>
-                    <button id="btnLimparHistorico" class="btn" style="background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%); color: white; padding: 8px 16px; font-size: 0.8rem; border-radius: var(--radius-md); box-shadow: none;">
+                    <button id="btnLimparHistorico" class="btn" style="background:linear-gradient(135deg,var(--danger) 0%,#b91c1c 100%);color:white;padding:8px 16px;font-size:0.8rem;border-radius:var(--radius-md);box-shadow:none;">
                         <i class="fas fa-trash-can"></i> Limpar Histórico
                     </button>
                 </div>
                 <div id="historyList">
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Nenhum registro localizado no dispositivo local.</span>
-                    </div>
+                    <div class="alert alert-info"><i class="fas fa-info-circle"></i><span>Nenhum registro localizado.</span></div>
                 </div>
             </div>
-
             <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-chart-bar"></i>
-                    <h2>Métricas Consoladas</h2>
-                </div>
+                <div class="card-header"><i class="fas fa-chart-bar"></i><h2>Métricas Consolidadas</h2></div>
                 <div id="statsDisplay">
                     <div class="form-row">
-                        <div class="pressure-card pa">
-                            <h3>Total de Utilizações</h3>
-                            <div class="value" id="totalUsos">0</div>
-                        </div>
-                        <div class="pressure-card mergulho">
-                            <h3>Cilindros Carregados</h3>
-                            <div class="value" id="totalCilindros">0</div>
-                        </div>
+                        <div class="pressure-card pa"><h3>Total de Utilizações</h3><div class="value" id="totalUsos">0</div></div>
+                        <div class="pressure-card mergulho"><h3>Cilindros Carregados</h3><div class="value" id="totalCilindros">0</div></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Tab: Segurança -->                             
+        <!-- ==================== Tab: Segurança ==================== -->
         <div class="tab-content" id="seguranca">
             <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h2>Regras Gerais de Segurança</h2>
-                </div>
-
+                <div class="card-header"><i class="fas fa-exclamation-triangle"></i><h2>Regras Gerais de Segurança</h2></div>
                 <div class="alert alert-danger">
                     <i class="fas fa-ban"></i>
                     <div>
                         <strong>ATENÇÃO — SEGURANÇA EM PRIMEIRO LUGAR</strong><br>
-                        A manipulação de fluidos pressurizados apresenta risco mecânico extremo. Linhas sob pressão que se rompem podem golpear violentamente os operadores. Nunca ultrapasse os limites indicados de cada cilindro.
-                    </div>
-                </div>
-
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>Sempre faça a inspeção prévia de conexões e fixação das mangueiras.</span>
-                </div>
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>NUNCA se afaste do compressor enquanto ele estiver em funcionamento.</span>
-                </div>
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>Em caso de vazamentos abruptos ou ruídos estranhos, pressione o botão de paragem de emergência.</span>
-                </div>
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>Certifique-se de que os EPIs regulamentares estão devidamente ajustados ao operador.</span>
-                </div>
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>Não tente desconectar conexões sob pressão; sempre despressurize as mangueiras pelas válvulas de alívio.</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-tools"></i>
-                    <h2>Equipamentos de Proteção Individual (EPI) Obrigatórios</h2>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-glasses" style="color: var(--primary); font-size: 1.3rem;"></i>
-                        <span>Óculos de Proteção Balística ou Industrial</span>
-                    </div>
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-hand" style="color: var(--primary); font-size: 1.3rem;"></i>
-                        <span>Luvas de Couro ou Raspa de Proteção Mecânica</span>
-                    </div>
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-ear-deaf" style="color: var(--primary); font-size: 1.3rem;"></i>
-                        <span>Abafador de Ruídos Auricular Concha ou Plugue</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-phone-alt"></i>
-                    <h2>Protocolo de Emergência Médica</h2>
-                </div>
-                <div class="alert alert-info">
-                    <i class="fas fa-ambulance"></i>
-                    <div>
-                        <strong>Em caso de acidentes com lesão física:</strong><br>
-                        1. Desligue imediatamente o interruptor de força geral.<br>
-                        2. Isole e evacue o ambiente onde se encontra o sistema.<br>
-                        3. Comunique de imediato o Oficial de Dia da Unidade Operacional.<br>
-                        4. Preste suporte de primeiros socorros e acione assistência médica especializada (193/192).
+                        A manipulação de fluidos pressurizados apresenta risco mecânico extremo. Nunca ultrapasse os limites indicados de cada cilindro.
                     </div>
                 </div>
             </div>
@@ -1558,21 +1445,15 @@
 
     </main>
 
-
-
-    <!-- Footer -->
     <footer class="footer">
         <p><strong>© 2026 BBZU - Bombeiro Bizurado</strong></p>
-        <p>Sistema de Gestão de Cilindros e Compressores v2.8</p>
-        <p class="footer-dev">
-            Desenvolvedor do App: Gabriel Souza Costa Ferreira &nbsp;|&nbsp; N° BM: 184.216-0
-        </p>
+        <p>Sistema de Gestão de Cilindros e Compressores v3.0</p>
+        <p class="footer-dev">Desenvolvedor: Gabriel Souza Costa Ferreira &nbsp;|&nbsp; N° BM: 184.216-0</p>
     </footer>
 
-    <!-- Área de Impressão PDF (oculta na tela) -->
     <div id="print-area" style="display:none;"></div>
 
-    <!-- Modal de Confirmação -->
+    <!-- Modal Confirmação -->
     <div class="modal-overlay" id="modalConfirm">
         <div class="modal">
             <div class="modal-header">
@@ -1580,59 +1461,140 @@
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="alert alert-success">
-                    <i class="fas fa-check"></i>
-                    <span id="modalMessage">Registro realizado com sucesso!</span>
-                </div>
-                <button class="btn btn-primary" onclick="closeModal()" style="width: 100%;">
-                    <i class="fas fa-thumbs-up"></i>
-                    Confirmar
-                </button>
+                <div class="alert alert-success"><i class="fas fa-check"></i><span id="modalMessage">Registro realizado com sucesso!</span></div>
+                <button class="btn btn-primary" onclick="closeModal()" style="width:100%;"><i class="fas fa-thumbs-up"></i> Confirmar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Alerta de Drenagem Periódica -->
+    <!-- Modal Drenagem -->
     <div class="modal-overlay" id="modalDrain">
-        <div class="modal" style="border: 2px solid var(--accent);">
-            <div class="modal-header" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); border-bottom: 2.5px solid var(--accent);">
+        <div class="modal" style="border:2px solid var(--accent);">
+            <div class="modal-header" style="background:linear-gradient(135deg,#f97316 0%,#ea580c 100%);border-bottom:2.5px solid var(--accent);">
                 <h3><i class="fas fa-tint"></i> Alerta de Drenagem</h3>
                 <button class="modal-close" onclick="closeDrainModal()">&times;</button>
             </div>
-            <div class="modal-body" style="text-align: center;">
-                <div class="alert alert-warning" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; margin-bottom: 20px;">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; color: #ea580c; margin-bottom: 8px;"></i>
+            <div class="modal-body" style="text-align:center;">
+                <div class="alert alert-warning" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;margin-bottom:20px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size:2.5rem;color:#ea580c;margin-bottom:8px;"></i>
                     <strong>ABRA A VÁLVULA DE DRENAGEM!</strong>
-                    <p>Já se passaram 5 minutos de operação contínua. Realize a purga do condensado do compressor imediatamente.</p>
+                    <p>Já se passaram 5 minutos de operação contínua. Realize a purga do condensado imediatamente.</p>
                 </div>
-                <button class="btn btn-success" onclick="closeDrainModal()" style="width: 100%; background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
+                <button class="btn btn-success" onclick="closeDrainModal()" style="width:100%;">
                     <i class="fas fa-check"></i> Drenagem Realizada
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- ============================================================
+         SCRIPT PRINCIPAL
+         ============================================================ -->
     <script>
-        // ===== VARIÁVEIS GLOBAIS =====
+        // ================================================================
+        // VARIÁVEIS GLOBAIS
+        // ================================================================
         let currentUsage = null;
         let timerInterval = null;
-        let drainInterval = null;
         let startTime = null;
-        let pausedAt = null;      // timestamp do momento da pausa
-        let totalPaused = 0;         // ms acumulados em pausa
+        let pausedAt = null;
+        let totalPaused = 0;
         let isPaused = false;
         let usageHistory = [];
         let supabaseConnected = false;
-        let drainElapsed = 0;
+        let realtimeChannel = null;
+        let _isFinishing = false;
 
-        // ===== AUXILIAR DE DATAS =====
-        function safeParseDate(v) {
-            if (!v || v === 'null' || v === 'undefined') return null;
-            const d = new Date(v);
-            return isNaN(d.getTime()) ? null : d;
+        let drainStartTime = null;
+        let drainAccumulated = 0;
+
+        // ================================================================
+        // RECENTLY FINISHED — TTL 30s
+        // ================================================================
+        const RECENTLY_FINISHED_KEY = 'recentlyFinishedIds';
+        const RECENTLY_FINISHED_TTL = 30000;
+
+        function rfAdd(id) {
+            const store = rfLoad(); store[String(id)] = Date.now();
+            localStorage.setItem(RECENTLY_FINISHED_KEY, JSON.stringify(store));
+        }
+        function rfHas(id) {
+            const store = rfLoad(); const ts = store[String(id)];
+            if (!ts) return false;
+            const alive = (Date.now() - ts) < RECENTLY_FINISHED_TTL;
+            if (!alive) { delete store[String(id)]; localStorage.setItem(RECENTLY_FINISHED_KEY, JSON.stringify(store)); }
+            return alive;
+        }
+        function rfLoad() {
+            try { return JSON.parse(localStorage.getItem(RECENTLY_FINISHED_KEY)) || {}; } catch { return {}; }
+        }
+        function rfCleanExpired() {
+            const store = rfLoad(); const now = Date.now(); let changed = false;
+            for (const id in store) { if ((now - store[id]) >= RECENTLY_FINISHED_TTL) { delete store[id]; changed = true; } }
+            if (changed) localStorage.setItem(RECENTLY_FINISHED_KEY, JSON.stringify(store));
         }
 
-        // ===== NAVEGAÇÃO DE ABAS =====
+        // ================================================================
+        // FINISHING FLAG — sessionStorage
+        // ================================================================
+        function setFinishingFlag(id) { sessionStorage.setItem('finishingId', String(id)); }
+        function clearFinishingFlag() { sessionStorage.removeItem('finishingId'); }
+        function isFinishingId(id) { return sessionStorage.getItem('finishingId') === String(id); }
+
+        // ================================================================
+        // DEDUPLICAÇÃO
+        // ================================================================
+        function deduplicateHistory(arr) {
+            const seen = new Set();
+            return arr.filter(item => {
+                const key = String(item.id);
+                if (seen.has(key)) return false;
+                seen.add(key); return true;
+            });
+        }
+
+        // ================================================================
+        // HELPERS DE PRESSÃO
+        // ================================================================
+        /**
+         * Normaliza pressões armazenadas no Supabase (JSONB) ou localmente.
+         * Aceita: [{cilindro:1,bar:50},...] ou [50, 30, ...] ou null
+         * Sempre retorna: [{cilindro:N, bar:V}, ...]
+         */
+        function normalizePressoes(raw, qty) {
+            if (!raw || !Array.isArray(raw) || raw.length === 0) return [];
+            // Se já está no formato objeto
+            if (typeof raw[0] === 'object' && raw[0] !== null && 'cilindro' in raw[0]) return raw;
+            // Se é array de números simples (legado)
+            return raw.map((v, i) => ({ cilindro: i + 1, bar: v ?? null }));
+        }
+
+        function formatarPressoes(pressoes) {
+            if (!pressoes || pressoes.length === 0) return '—';
+            return pressoes.map(p => `Cil.${p.cilindro}: ${p.bar ?? '—'} BAR`).join(' | ');
+        }
+
+        // ================================================================
+        // HELPERS GERAIS
+        // ================================================================
+        function safeParseDate(v) {
+            if (!v || v === 'null' || v === 'undefined') return null;
+            const d = new Date(v); return isNaN(d.getTime()) ? null : d;
+        }
+
+        function escHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function formatDateBR(iso) {
+            const d = safeParseDate(iso); if (!d) return '—';
+            return d.toLocaleDateString('pt-BR') + ' às ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // ================================================================
+        // NAVEGAÇÃO
+        // ================================================================
         document.querySelectorAll('.nav-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
@@ -1643,70 +1605,209 @@
             });
         });
 
-        // ===== INDICADOR DE CONEXÃO =====
+        // ================================================================
+        // SYNC STATUS
+        // ================================================================
         function updateSyncStatus(connected, message) {
-            const el = document.getElementById('syncStatus');
-            if (!el) return;
+            const el = document.getElementById('syncStatus'); if (!el) return;
             el.className = 'sync-status ' + (connected ? 'online' : 'offline');
             el.innerHTML = `<i class="fas fa-${connected ? 'cloud' : 'cloud-slash'}"></i><span>${message || (connected ? 'Sincronizado' : 'Offline')}</span>`;
         }
 
-        // ===== SUPABASE — CARREGAR HISTÓRICO =====
+        // ================================================================
+        // RENDERIZAÇÃO DOS CAMPOS DE PRESSÃO INICIAL (formulário de início)
+        // ================================================================
+        function renderPressaoInicialFields(qty, valoresSalvos) {
+            const container = document.getElementById('pressaoInicialContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            for (let i = 1; i <= qty; i++) {
+                const valorSalvo = valoresSalvos
+                    ? (valoresSalvos.find(p => p.cilindro === i)?.bar ?? '')
+                    : '';
+
+                container.innerHTML += `
+            <div class="cylinder-pressure-row">
+                <div class="cylinder-badge">${i}</div>
+                <label>Cilindro ${i}</label>
+                <input type="number"
+                       id="pressaoInicial_${i}"
+                       class="pressao-inicial-input"
+                       min="0" max="500"
+                       placeholder="Ex: 50"
+                       data-cilindro="${i}"
+                       value="${valorSalvo}">
+                <span style="font-size:0.8rem;color:var(--text-muted);white-space:nowrap;">BAR</span>
+            </div>`;
+            }
+        }
+
+        // ================================================================
+        // RENDERIZAÇÃO DOS CAMPOS DE PRESSÃO FINAL (formulário de encerramento)
+        // ================================================================
+        function renderCylinderPressureFields(qty) {
+            const container = document.getElementById('cylinderPressuresContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            for (let i = 1; i <= qty; i++) {
+                container.innerHTML += `
+            <div class="cylinder-pressure-row">
+                <div class="cylinder-badge">${i}</div>
+                <label>Cilindro ${i}</label>
+                <input type="number"
+                       id="pressaoFinal_${i}"
+                       min="0" max="500"
+                       placeholder="Ex: 300"
+                       data-cilindro="${i}">
+                <span style="font-size:0.8rem;color:var(--text-muted);white-space:nowrap;">BAR</span>
+            </div>`;
+            }
+        }
+
+        // Atualiza campos ao mudar quantidade de cilindros
+        document.getElementById('qtdCilindros').addEventListener('input', function () {
+            const qty = parseInt(this.value) || 1;
+            renderPressaoInicialFields(qty, null);
+            // (campos finais só existem durante operação ativa)
+        });
+
+        // Inicializa campos de pressão inicial ao carregar a página
+        renderPressaoInicialFields(1, null);
+
+        // ================================================================
+        // COLETAR PRESSÕES DOS CAMPOS
+        // ================================================================
+        function coletarPressoesIniciais() {
+            const inputs = document.querySelectorAll('.pressao-inicial-input');
+            const pressoes = [];
+            inputs.forEach(input => {
+                pressoes.push({
+                    cilindro: parseInt(input.dataset.cilindro),
+                    bar: input.value !== '' ? parseInt(input.value) : null
+                });
+            });
+            return pressoes;
+        }
+
+        function coletarPressoesFinais(qty) {
+            const pressoes = [];
+            for (let i = 1; i <= qty; i++) {
+                const input = document.getElementById(`pressaoFinal_${i}`);
+                pressoes.push({
+                    cilindro: i,
+                    bar: input && input.value !== '' ? parseInt(input.value) : null
+                });
+            }
+            return pressoes;
+        }
+
+        // ================================================================
+        // SUPABASE — CARREGAR HISTÓRICO
+        // ================================================================
         async function loadHistoryFromSupabase() {
+            rfCleanExpired();
+
             if (!window.supabaseClient) {
-                usageHistory = JSON.parse(localStorage.getItem('usageHistory')) || [];
+                usageHistory = deduplicateHistory(JSON.parse(localStorage.getItem('usageHistory')) || []);
                 updateSyncStatus(false, 'Modo Local');
                 updateHistory(); updateStats(); return;
             }
+
             try {
                 const { data, error } = await window.supabaseClient
                     .from('utilizacoes')
                     .select('*')
                     .order('criado_em', { ascending: false });
+
                 if (error) throw error;
+
                 if (data) {
-                    usageHistory = data.map(item => ({
+                    const localSession = localStorage.getItem('currentUsage');
+                    const localId = localSession ? JSON.parse(localSession)?.id : null;
+
+                    const orphans = data.filter(item =>
+                        item.status === 'ativo' &&
+                        item.id !== localId &&
+                        !rfHas(item.id) &&
+                        !isFinishingId(item.id) &&
+                        !_isFinishing
+                    );
+
+                    for (const orphan of orphans) {
+                        await window.supabaseClient
+                            .from('utilizacoes')
+                            .update({ status: 'interrompido' })
+                            .eq('id', orphan.id);
+                    }
+
+                    let finalData = data;
+                    if (orphans.length > 0) {
+                        const { data: refreshed } = await window.supabaseClient
+                            .from('utilizacoes')
+                            .select('*')
+                            .order('criado_em', { ascending: false });
+                        if (refreshed) finalData = refreshed;
+                    }
+
+                    // ✅ Mapeia com suporte a pressoes_iniciais e pressoes_finais JSONB
+                    usageHistory = deduplicateHistory(finalData.map(item => ({
                         id: item.id,
                         nome: item.nome,
                         matricula: item.matricula,
                         tipoCilindro: item.tipo_cilindro,
                         qtdCilindros: item.qtd_cilindros,
+                        // ✅ Novos campos JSONB
+                        pressoesIniciais: normalizePressoes(item.pressoes_iniciais, item.qtd_cilindros),
+                        pressoesFinais: normalizePressoes(item.pressoes_finais, item.qtd_cilindros),
+                        // Legado (mantido para compatibilidade)
                         pressaoInicial: item.pressao_inicial,
-                        pressoesFinal: item.pressoes_final || [],   // array por cilindro
-                        pressaoFinal: item.pressao_final,           // compatibilidade legada
+                        pressaoFinal: item.pressao_final,
                         dataInicio: item.data_inicio,
                         dataFim: item.data_fim,
                         tempoTotal: item.tempo_total,
                         observacaoInicio: item.observacao_inicio,
                         observacaoFim: item.observacao_fim,
                         status: item.status
-                    }));
+                    })));
+
                     localStorage.setItem('usageHistory', JSON.stringify(usageHistory));
                     supabaseConnected = true;
                     updateSyncStatus(true, 'Sincronizado');
                 }
+
                 updateHistory(); updateStats();
                 setupRealtimeSubscription();
+
             } catch (err) {
                 console.error('❌ Supabase erro:', err);
-                usageHistory = JSON.parse(localStorage.getItem('usageHistory')) || [];
+                usageHistory = deduplicateHistory(JSON.parse(localStorage.getItem('usageHistory')) || []);
                 updateSyncStatus(false, 'Modo Local');
                 updateHistory(); updateStats();
             }
         }
 
-        // ===== REALTIME =====
+        // ================================================================
+        // REALTIME
+        // ================================================================
         function setupRealtimeSubscription() {
             if (!window.supabaseClient) return;
-            window.supabaseClient
+            if (realtimeChannel) window.supabaseClient.removeChannel(realtimeChannel);
+
+            realtimeChannel = window.supabaseClient
                 .channel('utilizacoes-changes')
                 .on('postgres_changes', { event: '*', schema: 'public', table: 'utilizacoes' }, () => {
-                    loadHistoryFromSupabase();
+                    if (_isFinishing) { console.log('🔒 Realtime bloqueado.'); return; }
+                    if (!currentUsage) loadHistoryFromSupabase();
+                    else updateSyncStatus(true, 'Atualização disponível');
                 })
                 .subscribe();
         }
 
-        // ===== TIMER =====
+        // ================================================================
+        // TIMER
+        // ================================================================
         function formatTime(ms) {
             if (!ms || ms < 0) ms = 0;
             const totalSec = Math.floor(ms / 1000);
@@ -1715,157 +1816,192 @@
             const s = totalSec % 60;
             return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }
-
         function getElapsedMs() {
             if (!startTime) return 0;
             const now = isPaused ? pausedAt : Date.now();
             return (now - startTime) - totalPaused;
         }
-
         function startTimer() {
             stopTimer();
-            drainElapsed = 0;
-            isPaused = false;
-            totalPaused = 0;
-            pausedAt = null;
+            isPaused = false; totalPaused = 0; pausedAt = null;
             startTime = Date.now();
+            drainAccumulated = 0; drainStartTime = Date.now();
             updateTimerUI();
             timerInterval = setInterval(() => {
                 if (isPaused) return;
-                updateTimerUI();
-                checkDrainReminder();
+                updateTimerUI(); checkDrainReminder();
             }, 1000);
         }
-
         function stopTimer() {
             if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-            if (drainInterval) { clearInterval(drainInterval); drainInterval = null; }
+            drainStartTime = null;
         }
-
         function updateTimerUI() {
             const el = document.getElementById('timerValue');
             if (el) el.textContent = formatTime(getElapsedMs());
         }
 
-        // ===== PAUSA/RETOMADA =====
+        // ================================================================
+        // PAUSA
+        // ================================================================
         function togglePause() {
             const btn = document.getElementById('btnPause');
             const display = document.getElementById('timerDisplay');
             if (!isPaused) {
-                isPaused = true;
-                pausedAt = Date.now();
-                if (btn) { btn.innerHTML = '<i class="fas fa-play"></i> Retomar'; btn.style.background = 'linear-gradient(135deg, #10b981 0%, #047857 100%)'; }
+                isPaused = true; pausedAt = Date.now();
+                if (drainStartTime) { drainAccumulated += Date.now() - drainStartTime; drainStartTime = null; }
+                if (btn) { btn.innerHTML = '<i class="fas fa-play"></i> Retomar'; btn.style.background = 'linear-gradient(135deg,#10b981 0%,#047857 100%)'; }
                 if (display) display.classList.add('paused');
-                showToast('⏸ Timer pausado — troque o cilindro e retome quando reiniciar o enchimento.');
+                showToast('⏸ Timer pausado — troque o cilindro e retome.');
             } else {
                 totalPaused += Date.now() - pausedAt;
-                pausedAt = null;
-                isPaused = false;
+                pausedAt = null; isPaused = false; drainStartTime = Date.now();
                 if (btn) { btn.innerHTML = '<i class="fas fa-pause"></i> Pausar (Troca)'; btn.style.background = ''; }
                 if (display) display.classList.remove('paused');
                 showToast('▶ Timer retomado!');
             }
         }
 
-
-        function emergencyStop() {
-            if (!confirm('⚠️ PARADA DE EMERGÊNCIA\n\nIsso encerrará o registro imediatamente sem checklist.\nConfirmar?')) return;
-
+        // ================================================================
+        // EMERGÊNCIA
+        // ================================================================
+        async function emergencyStop() {
+            if (!confirm('⚠️ PARADA DE EMERGÊNCIA\n\nIsso encerrará o registro imediatamente.\nConfirmar?')) return;
             stopTimer();
-
-            // ✅ BLOCO ADICIONADO — atualiza o registro no Supabase antes de limpar
-            if (window.supabaseClient && currentUsage?.id && !currentUsage.id.startsWith('local_')) {
-                window.supabaseClient
-                    .from('utilizacoes')
-                    .update({
-                        status: 'cancelado',
-                        data_fim: new Date().toISOString()
-                    })
-                    .eq('id', currentUsage.id)
-                    .then(() => updateSyncStatus(true, 'Sincronizado'))
-                    .catch(err => {
-                        console.warn('⚠️ Erro ao cancelar no Supabase:', err);
-                        updateSyncStatus(false, 'Erro ao sincronizar');
-                    });
+            if (window.supabaseClient && currentUsage?.id) {
+                rfAdd(currentUsage.id); setFinishingFlag(currentUsage.id); _isFinishing = true;
+                try {
+                    await window.supabaseClient
+                        .from('utilizacoes')
+                        .update({ status: 'interrompido', data_fim: new Date().toISOString() })
+                        .eq('id', currentUsage.id);
+                } catch (err) { console.warn('Emergency update erro:', err); }
+                clearFinishingFlag(); _isFinishing = false;
             }
-            // ✅ FIM DO BLOCO ADICIONADO
-
             currentUsage = null;
             localStorage.removeItem('currentUsage');
             updateUsageStatus();
             document.getElementById('timerCard').style.display = 'none';
             document.getElementById('startForm').style.display = 'block';
             document.getElementById('endForm').style.display = 'none';
+            document.getElementById('cylinderPressuresContainer').innerHTML = '';
             showToast('🛑 Parada de emergência registrada.');
+            setTimeout(() => loadHistoryFromSupabase(), 1000);
         }
 
-
-        // ===== DRENAGEM =====
-        let drainElapsed = 0;
+        // ================================================================
+        // DRENAGEM
+        // ================================================================
+        function getDrainElapsedMs() {
+            const extra = (!isPaused && drainStartTime) ? (Date.now() - drainStartTime) : 0;
+            return drainAccumulated + extra;
+        }
         function checkDrainReminder() {
-            drainElapsed++;
-            if (drainElapsed > 0 && drainElapsed % 300 === 0) { // a cada 5 min
+            const elapsed = getDrainElapsedMs();
+            const fiveMin = 5 * 60 * 1000;
+            const alertsDue = Math.floor(elapsed / fiveMin);
+            if (!checkDrainReminder._lastAlert) checkDrainReminder._lastAlert = 0;
+            if (alertsDue > checkDrainReminder._lastAlert) {
+                checkDrainReminder._lastAlert = alertsDue;
                 document.getElementById('modalDrain').classList.add('show');
             }
         }
         function closeDrainModal() {
             document.getElementById('modalDrain').classList.remove('show');
+            drainAccumulated = 0;
+            drainStartTime = isPaused ? null : Date.now();
+            checkDrainReminder._lastAlert = 0;
         }
 
-        // ===== GERAR CAMPOS DE PRESSÃO FINAL =====
-        function renderCylinderPressureFields(qty) {
-            const container = document.getElementById('cylinderPressuresContainer');
-            if (!container) return;
-            container.innerHTML = '';
-            for (let i = 1; i <= qty; i++) {
-                container.innerHTML += `
-                <div class="cylinder-pressure-row">
-                    <div class="cylinder-badge">${i}</div>
-                    <label>Cilindro ${i}</label>
-                    <input type="number" id="pressaoFinal_${i}" min="0" max="300"
-                           placeholder="Ex: 300" required>
-                </div>`;
-            }
-        }
-
-        // ===== STATUS =====
+        // ================================================================
+        // STATUS DO EQUIPAMENTO
+        // ================================================================
         function updateUsageStatus() {
-            const el = document.getElementById('usageStatus');
-            if (!el) return;
+            const el = document.getElementById('usageStatus'); if (!el) return;
             if (currentUsage) {
+                const presInicial = currentUsage.pressoesIniciais?.length
+                    ? currentUsage.pressoesIniciais.map(p => `Cil.${p.cilindro}: ${p.bar ?? '—'} BAR`).join(' | ')
+                    : '—';
                 el.innerHTML = `
-                <i class="fas fa-spinner fa-spin status-icon in-use"></i>
-                <div class="status-text">Em Operação</div>
-                <div class="status-details">
-                    Operador: <strong>${currentUsage.nome}</strong><br>
-                    Tipo: <strong>${currentUsage.tipoCilindro}</strong> —
-                    <strong>${currentUsage.qtdCilindros}</strong> cilindro(s)<br>
-                    Início: <strong>${new Date(currentUsage.dataInicio).toLocaleTimeString('pt-BR')}</strong>
-                </div>`;
+            <i class="fas fa-spinner fa-spin status-icon in-use"></i>
+            <div class="status-text">Em Operação</div>
+            <div class="status-details">
+                Operador: <strong>${escHtml(currentUsage.nome)}</strong><br>
+                Tipo: <strong>${escHtml(currentUsage.tipoCilindro)}</strong> —
+                <strong>${currentUsage.qtdCilindros}</strong> cilindro(s)<br>
+                Pressão Inicial: <strong>${presInicial}</strong><br>
+                Início: <strong>${new Date(currentUsage.dataInicio).toLocaleTimeString('pt-BR')}</strong>
+            </div>`;
             } else {
                 el.innerHTML = `
-                <i class="fas fa-check-circle status-icon available"></i>
-                <div class="status-text">Disponível para Uso</div>
-                <div class="status-details">Nenhuma operação ativa registrada.</div>`;
+            <i class="fas fa-check-circle status-icon available"></i>
+            <div class="status-text">Disponível para Uso</div>
+            <div class="status-details">Nenhuma operação ativa registrada.</div>`;
             }
         }
 
-        // ===== FORMULÁRIO — INICIAR =====
+        // ================================================================
+        // FORMULÁRIO — INICIAR
+        // ================================================================
         document.getElementById('formStart').addEventListener('submit', async function (e) {
             e.preventDefault();
+
             const qty = parseInt(document.getElementById('qtdCilindros').value) || 1;
+            // ✅ Coleta pressões iniciais por cilindro
+            const pressoesIniciais = coletarPressoesIniciais();
+
             currentUsage = {
                 id: Date.now().toString(),
                 nome: document.getElementById('militarNome').value.trim(),
                 matricula: document.getElementById('militarMatricula').value.trim(),
                 tipoCilindro: document.getElementById('tipoCilindro').value,
                 qtdCilindros: qty,
-                pressaoInicial: document.getElementById('pressaoInicial').value || null,
+                pressoesIniciais: pressoesIniciais,   // ✅ Array [{cilindro, bar}]
+                pressoesFinais: [],
+                // Legado: pressão do primeiro cilindro (compatibilidade CSV antigo)
+                pressaoInicial: pressoesIniciais[0]?.bar ?? null,
                 observacaoInicio: document.getElementById('observacaoInicio').value.trim() || null,
                 dataInicio: new Date().toISOString(),
-                status: 'ativo'
+                status: 'ativo',
+                _supabaseIdConfirmed: false
             };
+
             localStorage.setItem('currentUsage', JSON.stringify(currentUsage));
+
+            // ✅ Insert no Supabase com pressoes_iniciais JSONB
+            if (window.supabaseClient) {
+                try {
+                    const { data, error } = await window.supabaseClient
+                        .from('utilizacoes')
+                        .insert([{
+                            nome: currentUsage.nome,
+                            matricula: currentUsage.matricula,
+                            tipo_cilindro: currentUsage.tipoCilindro,
+                            qtd_cilindros: currentUsage.qtdCilindros,
+                            pressoes_iniciais: pressoesIniciais,          // ✅ JSONB
+                            pressao_inicial: currentUsage.pressaoInicial, // legado
+                            observacao_inicio: currentUsage.observacaoInicio,
+                            data_inicio: currentUsage.dataInicio,
+                            status: 'ativo'
+                        }])
+                        .select('id')
+                        .single();
+
+                    if (!error && data?.id) {
+                        currentUsage.id = data.id;
+                        currentUsage._supabaseIdConfirmed = true;
+                        localStorage.setItem('currentUsage', JSON.stringify(currentUsage));
+                        console.log('✅ ID real do Supabase confirmado:', data.id);
+                    } else if (error) {
+                        console.warn('⚠️ Supabase insert erro:', error);
+                    }
+                } catch (err) {
+                    console.warn('⚠️ Supabase insert erro:', err);
+                }
+            }
+
+            this.reset();
+            renderPressaoInicialFields(1, null); // reseta para 1 cilindro após submit
             startTimer();
             renderCylinderPressureFields(qty);
             document.getElementById('startForm').style.display = 'none';
@@ -1873,43 +2009,44 @@
             document.getElementById('endForm').style.display = 'block';
             updateUsageStatus();
             showModal('Operação iniciada! Cronômetro em andamento.');
-
-            // Salva no Supabase como "ativo"
-            if (window.supabaseClient) {
-                try {
-                    await window.supabaseClient.from('utilizacoes').insert([{
-                        nome: currentUsage.nome,
-                        matricula: currentUsage.matricula,
-                        tipo_cilindro: currentUsage.tipoCilindro,
-                        qtd_cilindros: currentUsage.qtdCilindros,
-                        pressao_inicial: currentUsage.pressaoInicial,
-                        observacao_inicio: currentUsage.observacaoInicio,
-                        data_inicio: currentUsage.dataInicio,
-                        status: 'ativo'
-                    }]);
-                } catch (err) { console.warn('Supabase insert erro:', err); }
-            }
         });
 
-        // ===== FORMULÁRIO — ENCERRAR =====
+        // ================================================================
+        // FORMULÁRIO — ENCERRAR
+        // ================================================================
         document.getElementById('formEnd').addEventListener('submit', async function (e) {
             e.preventDefault();
-            const qty = currentUsage ? currentUsage.qtdCilindros : 1;
-            const pressoes = [];
-            for (let i = 1; i <= qty; i++) {
-                const v = document.getElementById(`pressaoFinal_${i}`)?.value;
-                pressoes.push(v ? parseInt(v) : null);
-            }
-            const obsInicio = currentUsage?.observacaoInicio || '';
+
+            // Lê o currentUsage mais recente (pega ID real do Supabase)
+            let freshUsage = currentUsage;
+            try {
+                const saved = localStorage.getItem('currentUsage');
+                if (saved) freshUsage = JSON.parse(saved);
+            } catch { }
+
+            const idToFinish = freshUsage?.id;
+            const idConfirmed = freshUsage?._supabaseIdConfirmed;
+            const qty = freshUsage ? freshUsage.qtdCilindros : 1;
+
+            console.log(`📋 Finalizando ID: ${idToFinish} | Confirmado: ${idConfirmed}`);
+
+            // ✅ Trava imediata
+            _isFinishing = true;
+            if (idToFinish) { rfAdd(idToFinish); setFinishingFlag(idToFinish); }
+
+            // ✅ Coleta pressões finais por cilindro
+            const pressoesFinais = coletarPressoesFinais(qty);
+
             const obsFim = document.getElementById('observacaoFim').value.trim() || '';
             const elapsed = getElapsedMs();
             const tempoTotal = formatTime(elapsed);
             const now = new Date().toISOString();
 
             const record = {
-                ...currentUsage,
-                pressoesFinal: pressoes,
-                pressaoFinal: pressoes[pressoes.length - 1],  // compatibilidade
+                ...freshUsage,
+                pressoesFinais,
+                // Legado: última pressão do lote
+                pressaoFinal: pressoesFinais[pressoesFinais.length - 1]?.bar ?? null,
                 observacaoFim: obsFim,
                 dataFim: now,
                 tempoTotal,
@@ -1917,82 +2054,112 @@
             };
 
             stopTimer();
-            usageHistory.unshift(record);
-            localStorage.setItem('usageHistory', JSON.stringify(usageHistory));
 
-            if (window.supabaseClient) {
+            // ✅ Update no Supabase com pressoes_finais JSONB
+            if (window.supabaseClient && idToFinish) {
                 try {
-                    await window.supabaseClient.from('utilizacoes').insert([{
-                        nome: record.nome,
-                        matricula: record.matricula,
-                        tipo_cilindro: record.tipoCilindro,
-                        qtd_cilindros: record.qtdCilindros,
-                        pressao_inicial: record.pressaoInicial,
-                        pressoes_final: pressoes,
-                        pressao_final: record.pressaoFinal,
-                        observacao_inicio: obsInicio,
-                        observacao_fim: obsFim,
-                        data_inicio: record.dataInicio,
-                        data_fim: now,
-                        tempo_total: tempoTotal,
-                        status: 'finalizado'
-                    }]);
-                } catch (err) { console.warn('Supabase insert finalizado erro:', err); }
+                    const { error } = await window.supabaseClient
+                        .from('utilizacoes')
+                        .update({
+                            pressoes_finais: pressoesFinais,               // ✅ JSONB
+                            pressao_final: record.pressaoFinal,           // legado
+                            observacao_fim: obsFim,
+                            data_fim: now,
+                            tempo_total: tempoTotal,
+                            status: 'finalizado'
+                        })
+                        .eq('id', idToFinish);
+
+                    if (error) console.warn('⚠️ Supabase update erro:', error);
+                    else console.log('✅ Registro finalizado com sucesso');
+                } catch (err) {
+                    console.warn('⚠️ Supabase update erro:', err);
+                }
             }
 
-            currentUsage = null;
-            isPaused = false;
-            totalPaused = 0;
+            // Atualiza estado local
+            usageHistory = deduplicateHistory([record, ...usageHistory]);
+            localStorage.setItem('usageHistory', JSON.stringify(usageHistory));
+
+            currentUsage = null; isPaused = false; totalPaused = 0;
             localStorage.removeItem('currentUsage');
 
+            // Libera travas
+            clearFinishingFlag(); _isFinishing = false;
+
+            // Reset UI
             document.getElementById('timerCard').style.display = 'none';
             document.getElementById('endForm').style.display = 'none';
             document.getElementById('startForm').style.display = 'block';
 
-            // Reset checklist
             document.querySelectorAll('#formEnd .checklist-item').forEach(item => {
                 item.classList.remove('checked');
                 const cb = item.querySelector('input[type="checkbox"]');
                 if (cb) cb.checked = false;
             });
-            document.getElementById('formEnd').reset();
 
+            document.getElementById('cylinderPressuresContainer').innerHTML = '';
+            renderPressaoInicialFields(1, null);
+            this.reset();
             updateUsageStatus();
             updateHistory();
             updateStats();
-            showModal(`Operação encerrada com sucesso!\nTempo total: ${tempoTotal}`);
+            showModal(`Operação encerrada!\nTempo total: ${tempoTotal}`);
+
+            setTimeout(() => loadHistoryFromSupabase(), 2000);
         });
 
-        // ===== HISTÓRICO =====
+        // ================================================================
+        // HISTÓRICO — RENDERIZAÇÃO
+        // ================================================================
         function updateHistory() {
-            const container = document.getElementById('historyList');
-            if (!container) return;
+            const container = document.getElementById('historyList'); if (!container) return;
+            usageHistory = deduplicateHistory(usageHistory);
+
             if (!usageHistory.length) {
                 container.innerHTML = `<div class="alert alert-info"><i class="fas fa-info-circle"></i><span>Nenhum registro localizado.</span></div>`;
                 return;
             }
-            container.innerHTML = usageHistory.map((item, idx) => {
-                const pressoes = item.pressoesFinal?.length
-                    ? item.pressoesFinal.map((p, i) => `<span class="cylinder-chip">Cil. ${i + 1}: ${p ?? '—'} BAR</span>`).join('')
-                    : `<span class="cylinder-chip">Final: ${item.pressaoFinal ?? '—'} BAR</span>`;
+
+            container.innerHTML = usageHistory.map(item => {
+
+                // ✅ Chips de pressão INICIAL
+                const chipsInicial = item.pressoesIniciais?.length
+                    ? item.pressoesIniciais.map(p =>
+                        `<span class="cylinder-chip initial">Cil.${p.cilindro} ↑ ${p.bar ?? '—'} BAR</span>`
+                    ).join('')
+                    : (item.pressaoInicial != null
+                        ? `<span class="cylinder-chip initial">Inicial: ${item.pressaoInicial} BAR</span>`
+                        : '');
+
+                // ✅ Chips de pressão FINAL
+                const chipsFinal = item.pressoesFinais?.length
+                    ? item.pressoesFinais.map(p =>
+                        `<span class="cylinder-chip">Cil.${p.cilindro} ↓ ${p.bar ?? '—'} BAR</span>`
+                    ).join('')
+                    : (item.pressaoFinal != null
+                        ? `<span class="cylinder-chip">Final: ${item.pressaoFinal} BAR</span>`
+                        : '<span class="cylinder-chip">Final: — BAR</span>');
 
                 const obsHtml = (item.observacaoInicio || item.observacaoFim) ? `
-                <div class="history-obs">
-                    ${item.observacaoInicio ? `<span><i class="fas fa-comment-dots"></i><b>Entrada:</b> ${escHtml(item.observacaoInicio)}</span>` : ''}
-                    ${item.observacaoFim ? `<span><i class="fas fa-comment-check"></i><b>Saída:</b> ${escHtml(item.observacaoFim)}</span>` : ''}
-                </div>` : '';
+            <div class="history-obs">
+                ${item.observacaoInicio ? `<span><i class="fas fa-comment-dots"></i><b>Entrada:</b> ${escHtml(item.observacaoInicio)}</span>` : ''}
+                ${item.observacaoFim ? `<span><i class="fas fa-comment-check"></i><b>Saída:</b> ${escHtml(item.observacaoFim)}</span>` : ''}
+            </div>` : '';
 
                 const badge = item.status === 'ativo'
                     ? `<span class="history-badge badge-active">Em Uso</span>`
-                    : `<span class="history-badge badge-completed">Finalizado</span>`;
+                    : item.status === 'interrompido'
+                        ? `<span class="history-badge badge-interrupted">Interrompido</span>`
+                        : `<span class="history-badge badge-completed">Finalizado</span>`;
 
                 return `
             <div class="history-item">
                 <div class="history-header">
                     <span class="history-user"><i class="fas fa-user-shield"></i> ${escHtml(item.nome)}</span>
-                    <div style="display:flex; gap:8px; align-items:center;">
+                    <div style="display:flex;gap:8px;align-items:center;">
                         ${badge}
-                        <button class="btn-pdf" onclick="printRecord(${idx})">
+                        <button class="btn-pdf" onclick="printRecord('${escHtml(String(item.id))}')">
                             <i class="fas fa-file-pdf"></i> PDF
                         </button>
                     </div>
@@ -2002,72 +2169,94 @@
                     <span><i class="fas fa-fire-flame-curved"></i> Tipo: ${escHtml(item.tipoCilindro)}</span>
                     <span><i class="fas fa-calendar-day"></i> ${formatDateBR(item.dataInicio)}</span>
                     <span><i class="fas fa-stopwatch"></i> Tempo: ${item.tempoTotal || '—'}</span>
-                    <span><i class="fas fa-gauge"></i> Pressão Inicial: ${item.pressaoInicial ?? '—'} BAR</span>
                     <span><i class="fas fa-cubes"></i> Qtd: ${item.qtdCilindros} cilindro(s)</span>
                 </div>
-                <div class="history-cylinders">${pressoes}</div>
+                ${chipsInicial ? `
+                <div class="history-pressures">
+                    <div class="history-pressures-label"><i class="fas fa-gauge" style="color:var(--primary);margin-right:4px;"></i>Pressões Iniciais</div>
+                    <div class="history-cylinders">${chipsInicial}</div>
+                </div>` : ''}
+                <div class="history-pressures">
+                    <div class="history-pressures-label"><i class="fas fa-gauge" style="color:var(--primary);margin-right:4px;"></i>Pressões Finais</div>
+                    <div class="history-cylinders">${chipsFinal}</div>
+                </div>
                 ${obsHtml}
             </div>`;
             }).join('');
         }
 
-        // ===== PRINT PDF =====
-        function printRecord(idx) {
-            const item = usageHistory[idx];
+        // ================================================================
+        // PDF / PRINT
+        // ================================================================
+        function printRecord(itemId) {
+            const item = usageHistory.find(h => String(h.id) === String(itemId));
             if (!item) return;
 
-            const pressoes = item.pressoesFinal?.length
-                ? item.pressoesFinal.map((p, i) => `<span class="print-chip">Cil. ${i + 1}: ${p ?? '—'} BAR</span>`).join('')
-                : `<span class="print-chip">Final: ${item.pressaoFinal ?? '—'} BAR</span>`;
+            // ✅ Tabela de pressões por cilindro (inicial e final)
+            const qty = item.qtdCilindros || 1;
+            let pressuresTable = '<div class="print-pressures-grid">';
+            for (let i = 1; i <= qty; i++) {
+                const ini = item.pressoesIniciais?.find(p => p.cilindro === i)?.bar ?? item.pressaoInicial ?? '—';
+                const fin = item.pressoesFinais?.find(p => p.cilindro === i)?.bar ?? item.pressaoFinal ?? '—';
+                pressuresTable += `
+            <div class="print-pressure-row">
+                <span class="cil-num">${i}</span>
+                <span style="flex:1;font-size:12px;">
+                    <b>Inicial:</b> ${ini} BAR &nbsp;→&nbsp; <b>Final:</b> ${fin} BAR
+                </span>
+            </div>`;
+            }
+            pressuresTable += '</div>';
 
             const area = document.getElementById('print-area');
             area.style.display = 'block';
             area.innerHTML = `
-            <div class="print-header">
-                <img src="brasao-cbmmg.png" alt="Brasão CBMMG">
-                <div>
-                    <h2>Corpo de Bombeiros Militar de Minas Gerais</h2>
-                    <p>Sistema de Controle de Compressor e Cilindros — CBMMG</p>
-                </div>
+        <div class="print-header">
+            <img src="brasao-cbmmg.png" alt="Brasão CBMMG">
+            <div>
+                <h2>Corpo de Bombeiros Militar de Minas Gerais</h2>
+                <p>Sistema de Controle de Compressor e Cilindros — CBMMG</p>
             </div>
-            <div class="print-title">📋 Relatório de Operação de Recarga</div>
-            <div class="print-row">
-                <div class="print-field"><div class="lbl">Militar Operador</div><div class="val">${escHtml(item.nome)}</div></div>
-                <div class="print-field"><div class="lbl">Matrícula</div><div class="val">${escHtml(item.matricula)}</div></div>
-                <div class="print-field"><div class="lbl">Tipo de Cilindro</div><div class="val">${escHtml(item.tipoCilindro)}</div></div>
-                <div class="print-field"><div class="lbl">Quantidade</div><div class="val">${item.qtdCilindros} cilindro(s)</div></div>
-                <div class="print-field"><div class="lbl">Início</div><div class="val">${formatDateBR(item.dataInicio)}</div></div>
-                <div class="print-field"><div class="lbl">Término</div><div class="val">${item.dataFim ? formatDateBR(item.dataFim) : '—'}</div></div>
-                <div class="print-field"><div class="lbl">Tempo Total de Operação</div><div class="val">${item.tempoTotal || '—'}</div></div>
-                <div class="print-field"><div class="lbl">Pressão Inicial do Lote</div><div class="val">${item.pressaoInicial ?? '—'} BAR</div></div>
-                <div class="print-field"><div class="lbl">Status</div><div class="val">${item.status === 'ativo' ? 'Em Uso' : 'Finalizado'}</div></div>
+        </div>
+        <div class="print-title">📋 Relatório de Operação de Recarga</div>
+        <div class="print-row">
+            <div class="print-field"><div class="lbl">Militar Operador</div><div class="val">${escHtml(item.nome)}</div></div>
+            <div class="print-field"><div class="lbl">Matrícula</div><div class="val">${escHtml(item.matricula)}</div></div>
+            <div class="print-field"><div class="lbl">Tipo de Cilindro</div><div class="val">${escHtml(item.tipoCilindro)}</div></div>
+            <div class="print-field"><div class="lbl">Quantidade</div><div class="val">${qty} cilindro(s)</div></div>
+            <div class="print-field"><div class="lbl">Início</div><div class="val">${formatDateBR(item.dataInicio)}</div></div>
+            <div class="print-field"><div class="lbl">Término</div><div class="val">${item.dataFim ? formatDateBR(item.dataFim) : '—'}</div></div>
+            <div class="print-field"><div class="lbl">Tempo Total</div><div class="val">${item.tempoTotal || '—'}</div></div>
+            <div class="print-field"><div class="lbl">Status</div>
+                <div class="val">${item.status === 'finalizado' ? 'Finalizado' : item.status === 'interrompido' ? 'Interrompido' : 'Em Uso'}</div>
             </div>
-            <div class="print-section-title">Pressões Finais por Cilindro</div>
-            <div style="margin-bottom:12px;">${pressoes}</div>
-            ${item.observacaoInicio ? `<div class="print-section-title">Observações de Entrada</div><div class="print-obs">${escHtml(item.observacaoInicio)}</div>` : ''}
-            ${item.observacaoFim ? `<div class="print-section-title">Observações de Saída</div><div class="print-obs">${escHtml(item.observacaoFim)}</div>` : ''}
-            <div class="print-footer">
-                Emitido em ${new Date().toLocaleString('pt-BR')} — BBZU Sistema de Gestão de Cilindros v2.8<br>
-                Desenvolvedor: Gabriel Souza Costa Ferreira | BM: 184.216-0
-            </div>`;
+        </div>
+        <div class="print-section-title">Pressões por Cilindro (Inicial → Final)</div>
+        ${pressuresTable}
+        ${item.observacaoInicio ? `<div class="print-section-title">Observações de Entrada</div><div class="print-obs">${escHtml(item.observacaoInicio)}</div>` : ''}
+        ${item.observacaoFim ? `<div class="print-section-title">Observações de Saída</div><div class="print-obs">${escHtml(item.observacaoFim)}</div>` : ''}
+        <div class="print-footer">
+            Emitido em ${new Date().toLocaleString('pt-BR')} — BBZU Sistema de Gestão de Cilindros v3.0<br>
+            Desenvolvedor: Gabriel Souza Costa Ferreira | BM: 184.216-0
+        </div>`;
 
-            setTimeout(() => {
-                window.print();
-                area.style.display = 'none';
-            }, 150);
+            setTimeout(() => { window.print(); area.style.display = 'none'; }, 150);
         }
 
-        // ===== STATS =====
+        // ================================================================
+        // STATS
+        // ================================================================
         function updateStats() {
-            const total = usageHistory.filter(h => h.status === 'finalizado').length;
-            const cils = usageHistory.filter(h => h.status === 'finalizado').reduce((a, h) => a + (parseInt(h.qtdCilindros) || 0), 0);
+            const finalizados = usageHistory.filter(h => h.status === 'finalizado');
             const elT = document.getElementById('totalUsos');
             const elC = document.getElementById('totalCilindros');
-            if (elT) elT.textContent = total;
-            if (elC) elC.textContent = cils;
+            if (elT) elT.textContent = finalizados.length;
+            if (elC) elC.textContent = finalizados.reduce((a, h) => a + (parseInt(h.qtdCilindros) || 0), 0);
         }
 
-        // ===== CHECKLIST =====
+        // ================================================================
+        // CHECKLIST
+        // ================================================================
         function toggleCheck(el, event) {
             if (event && event.target.tagName === 'INPUT') return;
             el.classList.toggle('checked');
@@ -2075,7 +2264,9 @@
             if (cb) cb.checked = !cb.checked;
         }
 
-        // ===== LIMPAR HISTÓRICO =====
+        // ================================================================
+        // LIMPAR HISTÓRICO LOCAL
+        // ================================================================
         document.getElementById('btnLimparHistorico')?.addEventListener('click', () => {
             if (!confirm('Deseja apagar o histórico local? (dados na nuvem não serão excluídos)')) return;
             usageHistory = [];
@@ -2083,69 +2274,79 @@
             updateHistory(); updateStats();
         });
 
-        // ===== MODAL =====
+        // ================================================================
+        // MODAL / TOAST
+        // ================================================================
         function showModal(msg) {
             document.getElementById('modalMessage').textContent = msg;
             document.getElementById('modalConfirm').classList.add('show');
         }
-        function closeModal() {
-            document.getElementById('modalConfirm').classList.remove('show');
-        }
+        function closeModal() { document.getElementById('modalConfirm').classList.remove('show'); }
 
-        // ===== TOAST =====
         function showToast(msg) {
             let t = document.getElementById('toast-msg');
             if (!t) {
-                t = document.createElement('div');
-                t.id = 'toast-msg';
-                t.style.cssText = `
-                position:fixed; bottom:70px; left:50%; transform:translateX(-50%);
-                background:#0f172a; color:#fff; padding:10px 20px; border-radius:50px;
-                font-size:0.82rem; font-weight:600; z-index:9999;
-                box-shadow:0 4px 20px rgba(0,0,0,0.25);
-                transition:opacity 0.3s; white-space:nowrap;`;
+                t = document.createElement('div'); t.id = 'toast-msg';
+                t.style.cssText = `position:fixed;bottom:70px;left:50%;transform:translateX(-50%);
+            background:#0f172a;color:#fff;padding:10px 20px;border-radius:50px;
+            font-size:0.82rem;font-weight:600;z-index:9999;
+            box-shadow:0 4px 20px rgba(0,0,0,0.25);transition:opacity 0.3s;white-space:nowrap;`;
                 document.body.appendChild(t);
             }
-            t.textContent = msg;
-            t.style.opacity = '1';
+            t.textContent = msg; t.style.opacity = '1';
             clearTimeout(t._timeout);
             t._timeout = setTimeout(() => { t.style.opacity = '0'; }, 3000);
         }
 
-        // ===== HELPERS =====
-        function escHtml(str) {
-            if (!str) return '';
-            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-        }
-        function formatDateBR(iso) {
-            const d = safeParseDate(iso);
-            if (!d) return '—';
-            return d.toLocaleDateString('pt-BR') + ' às ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        }
-
-        // ===== RESTAURAR SESSÃO ATIVA =====
-        const saved = localStorage.getItem('currentUsage');
-        if (saved) {
+        // ================================================================
+        // RESTAURAR SESSÃO ATIVA (após F5)
+        // ================================================================
+        (function restoreSession() {
+            const saved = localStorage.getItem('currentUsage');
+            if (!saved) return;
             try {
                 currentUsage = JSON.parse(saved);
                 const qty = currentUsage?.qtdCilindros || 1;
+
+                // ✅ Restaura campos de pressão inicial (readonly — já registrados)
+                renderPressaoInicialFields(qty, currentUsage.pressoesIniciais || []);
+                // Torna os campos readonly (operação já iniciada)
+                setTimeout(() => {
+                    document.querySelectorAll('.pressao-inicial-input').forEach(inp => {
+                        inp.setAttribute('readonly', true);
+                    });
+                }, 50);
+
+                // Restaura campos de pressão final (vazios para preenchimento)
                 renderCylinderPressureFields(qty);
+
                 startTime = safeParseDate(currentUsage.dataInicio)?.getTime() || Date.now();
-                totalPaused = 0;
-                isPaused = false;
+                totalPaused = 0; isPaused = false;
+                drainAccumulated = 0; drainStartTime = Date.now();
+                checkDrainReminder._lastAlert = 0;
+
                 updateTimerUI();
-                timerInterval = setInterval(() => { updateTimerUI(); checkDrainReminder(); }, 1000);
+                timerInterval = setInterval(() => {
+                    if (isPaused) return;
+                    updateTimerUI(); checkDrainReminder();
+                }, 1000);
+
                 document.getElementById('startForm').style.display = 'none';
                 document.getElementById('timerCard').style.display = 'block';
                 document.getElementById('endForm').style.display = 'block';
                 updateUsageStatus();
-            } catch (e) { localStorage.removeItem('currentUsage'); }
-        }
+                showToast('🔄 Sessão anterior restaurada.');
+            } catch (e) {
+                localStorage.removeItem('currentUsage');
+            }
+        })();
 
-        // ===== INIT =====
+        // ================================================================
+        // INIT
+        // ================================================================
         loadHistoryFromSupabase();
         updateUsageStatus();
-
     </script>
+
 </body>
 </html>
