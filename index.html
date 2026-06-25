@@ -1437,130 +1437,133 @@
                 </form>
             </div>
 
-
-            <!-- Tab: Histórico -->
-            <div class="tab-content" id="historico">
-                <div class="card">
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%;">
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <i class="fas fa-history"></i>
-                            <h2>Registros Recentes de Operação</h2>
-                        </div>
-                        <button id="btnLimparHistorico" class="btn" style="background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%); color: white; padding: 8px 16px; font-size: 0.8rem; border-radius: var(--radius-md); box-shadow: none;">
-                            <i class="fas fa-trash-can"></i> Limpar Histórico
-                        </button>
+        </div>
+        <!-- ✅ FECHAMENTO CORRETO do #registro AQUI, antes do histórico -->
+        <!-- Tab: Histórico -->                             
+        <div class="tab-content" id="historico">
+            <div class="card">
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-history"></i>
+                        <h2>Registros Recentes de Operação</h2>
                     </div>
-                    <div id="historyList">
-                        <div class="alert alert-info">
-                            <i class="fas fa-info-circle"></i>
-                            <span>Nenhum registro localizado no dispositivo local.</span>
-                        </div>
-                    </div>
+                    <button id="btnLimparHistorico" class="btn" style="background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%); color: white; padding: 8px 16px; font-size: 0.8rem; border-radius: var(--radius-md); box-shadow: none;">
+                        <i class="fas fa-trash-can"></i> Limpar Histórico
+                    </button>
                 </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-chart-bar"></i>
-                        <h2>Métricas Consoladas</h2>
-                    </div>
-                    <div id="statsDisplay">
-                        <div class="form-row">
-                            <div class="pressure-card pa">
-                                <h3>Total de Utilizações</h3>
-                                <div class="value" id="totalUsos">0</div>
-                            </div>
-                            <div class="pressure-card mergulho">
-                                <h3>Cilindros Carregados</h3>
-                                <div class="value" id="totalCilindros">0</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab: Segurança -->
-            <div class="tab-content" id="seguranca">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h2>Regras Gerais de Segurança</h2>
-                    </div>
-
-                    <div class="alert alert-danger">
-                        <i class="fas fa-ban"></i>
-                        <div>
-                            <strong>ATENÇÃO — SEGURANÇA EM PRIMEIRO LUGAR</strong><br>
-                            A manipulação de fluidos pressurizados apresenta risco mecânico extremo. Linhas sob pressão que se rompem podem golpear violentamente os operadores. Nunca ultrapasse os limites indicados de cada cilindro.
-                        </div>
-                    </div>
-
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                        <span>Sempre faça a inspeção prévia de conexões e fixação das mangueiras.</span>
-                    </div>
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                        <span>NUNCA se afaste do compressor enquanto ele estiver em funcionamento.</span>
-                    </div>
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                        <span>Em caso de vazamentos abruptos ou ruídos estranhos, pressione o botão de paragem de emergência.</span>
-                    </div>
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                        <span>Certifique-se de que os EPIs regulamentares estão devidamente ajustados ao operador.</span>
-                    </div>
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                        <span>Não tente desconectar conexões sob pressão; sempre despressurize as mangueiras pelas válvulas de alívio.</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-tools"></i>
-                        <h2>Equipamentos de Proteção Individual (EPI) Obrigatórios</h2>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div class="checklist-item" style="cursor: default;">
-                            <i class="fas fa-glasses" style="color: var(--primary); font-size: 1.3rem;"></i>
-                            <span>Óculos de Proteção Balística ou Industrial</span>
-                        </div>
-                        <div class="checklist-item" style="cursor: default;">
-                            <i class="fas fa-hand" style="color: var(--primary); font-size: 1.3rem;"></i>
-                            <span>Luvas de Couro ou Raspa de Proteção Mecânica</span>
-                        </div>
-                        <div class="checklist-item" style="cursor: default;">
-                            <i class="fas fa-ear-deaf" style="color: var(--primary); font-size: 1.3rem;"></i>
-                            <span>Abafador de Ruídos Auricular Concha ou Plugue</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-phone-alt"></i>
-                        <h2>Protocolo de Emergência Médica</h2>
-                    </div>
+                <div id="historyList">
                     <div class="alert alert-info">
-                        <i class="fas fa-ambulance"></i>
-                        <div>
-                            <strong>Em caso de acidentes com lesão física:</strong><br>
-                            1. Desligue imediatamente o interruptor de força geral.<br>
-                            2. Isole e evacue o ambiente onde se encontra o sistema.<br>
-                            3. Comunique de imediato o Oficial de Dia da Unidade Operacional.<br>
-                            4. Preste suporte de primeiros socorros e acione assistência médica especializada (193/192).
+                        <i class="fas fa-info-circle"></i>
+                        <span>Nenhum registro localizado no dispositivo local.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h2>Métricas Consoladas</h2>
+                </div>
+                <div id="statsDisplay">
+                    <div class="form-row">
+                        <div class="pressure-card pa">
+                            <h3>Total de Utilizações</h3>
+                            <div class="value" id="totalUsos">0</div>
+                        </div>
+                        <div class="pressure-card mergulho">
+                            <h3>Cilindros Carregados</h3>
+                            <div class="value" id="totalCilindros">0</div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Tab: Segurança -->                             
+        <div class="tab-content" id="seguranca">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>Regras Gerais de Segurança</h2>
+                </div>
+
+                <div class="alert alert-danger">
+                    <i class="fas fa-ban"></i>
+                    <div>
+                        <strong>ATENÇÃO — SEGURANÇA EM PRIMEIRO LUGAR</strong><br>
+                        A manipulação de fluidos pressurizados apresenta risco mecânico extremo. Linhas sob pressão que se rompem podem golpear violentamente os operadores. Nunca ultrapasse os limites indicados de cada cilindro.
+                    </div>
+                </div>
+
+                <div class="checklist-item" style="cursor: default;">
+                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                    <span>Sempre faça a inspeção prévia de conexões e fixação das mangueiras.</span>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                    <span>NUNCA se afaste do compressor enquanto ele estiver em funcionamento.</span>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                    <span>Em caso de vazamentos abruptos ou ruídos estranhos, pressione o botão de paragem de emergência.</span>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                    <span>Certifique-se de que os EPIs regulamentares estão devidamente ajustados ao operador.</span>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                    <span>Não tente desconectar conexões sob pressão; sempre despressurize as mangueiras pelas válvulas de alívio.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-tools"></i>
+                    <h2>Equipamentos de Proteção Individual (EPI) Obrigatórios</h2>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="checklist-item" style="cursor: default;">
+                        <i class="fas fa-glasses" style="color: var(--primary); font-size: 1.3rem;"></i>
+                        <span>Óculos de Proteção Balística ou Industrial</span>
+                    </div>
+                    <div class="checklist-item" style="cursor: default;">
+                        <i class="fas fa-hand" style="color: var(--primary); font-size: 1.3rem;"></i>
+                        <span>Luvas de Couro ou Raspa de Proteção Mecânica</span>
+                    </div>
+                    <div class="checklist-item" style="cursor: default;">
+                        <i class="fas fa-ear-deaf" style="color: var(--primary); font-size: 1.3rem;"></i>
+                        <span>Abafador de Ruídos Auricular Concha ou Plugue</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-phone-alt"></i>
+                    <h2>Protocolo de Emergência Médica</h2>
+                </div>
+                <div class="alert alert-info">
+                    <i class="fas fa-ambulance"></i>
+                    <div>
+                        <strong>Em caso de acidentes com lesão física:</strong><br>
+                        1. Desligue imediatamente o interruptor de força geral.<br>
+                        2. Isole e evacue o ambiente onde se encontra o sistema.<br>
+                        3. Comunique de imediato o Oficial de Dia da Unidade Operacional.<br>
+                        4. Preste suporte de primeiros socorros e acione assistência médica especializada (193/192).
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
+
 
 
     <!-- Footer -->
     <footer class="footer">
         <p><strong>© 2026 BBZU - Bombeiro Bizurado</strong></p>
-        <p>Sistema de Gestão de Cilindros e Compressores v2.7</p>
+        <p>Sistema de Gestão de Cilindros e Compressores v2.6</p>
         <p class="footer-dev">
             Desenvolvedor do App: Gabriel Souza Costa Ferreira &nbsp;|&nbsp; N° BM: 184.216-0
         </p>
@@ -1620,6 +1623,7 @@
         let isPaused = false;
         let usageHistory = [];
         let supabaseConnected = false;
+        let drainElapsed = 0;
 
         // ===== AUXILIAR DE DATAS =====
         function safeParseDate(v) {
@@ -1720,6 +1724,7 @@
 
         function startTimer() {
             stopTimer();
+            drainElapsed = 0;
             isPaused = false;
             totalPaused = 0;
             pausedAt = null;
@@ -1762,9 +1767,29 @@
             }
         }
 
+
         function emergencyStop() {
             if (!confirm('⚠️ PARADA DE EMERGÊNCIA\n\nIsso encerrará o registro imediatamente sem checklist.\nConfirmar?')) return;
+
             stopTimer();
+
+            // ✅ BLOCO ADICIONADO — atualiza o registro no Supabase antes de limpar
+            if (window.supabaseClient && currentUsage?.id && !currentUsage.id.startsWith('local_')) {
+                window.supabaseClient
+                    .from('utilizacoes')
+                    .update({
+                        status: 'cancelado',
+                        data_fim: new Date().toISOString()
+                    })
+                    .eq('id', currentUsage.id)
+                    .then(() => updateSyncStatus(true, 'Sincronizado'))
+                    .catch(err => {
+                        console.warn('⚠️ Erro ao cancelar no Supabase:', err);
+                        updateSyncStatus(false, 'Erro ao sincronizar');
+                    });
+            }
+            // ✅ FIM DO BLOCO ADICIONADO
+
             currentUsage = null;
             localStorage.removeItem('currentUsage');
             updateUsageStatus();
@@ -1773,6 +1798,7 @@
             document.getElementById('endForm').style.display = 'none';
             showToast('🛑 Parada de emergência registrada.');
         }
+
 
         // ===== DRENAGEM =====
         let drainElapsed = 0;
@@ -1793,12 +1819,12 @@
             container.innerHTML = '';
             for (let i = 1; i <= qty; i++) {
                 container.innerHTML += `
-            <div class="cylinder-pressure-row">
-                <div class="cylinder-badge">${i}</div>
-                <label>Cilindro ${i}</label>
-                <input type="number" id="pressaoFinal_${i}" min="0" max="300"
-                       placeholder="Ex: 300" required>
-            </div>`;
+                <div class="cylinder-pressure-row">
+                    <div class="cylinder-badge">${i}</div>
+                    <label>Cilindro ${i}</label>
+                    <input type="number" id="pressaoFinal_${i}" min="0" max="300"
+                           placeholder="Ex: 300" required>
+                </div>`;
             }
         }
 
@@ -1808,19 +1834,19 @@
             if (!el) return;
             if (currentUsage) {
                 el.innerHTML = `
-            <i class="fas fa-spinner fa-spin status-icon in-use"></i>
-            <div class="status-text">Em Operação</div>
-            <div class="status-details">
-                Operador: <strong>${currentUsage.nome}</strong><br>
-                Tipo: <strong>${currentUsage.tipoCilindro}</strong> — 
-                <strong>${currentUsage.qtdCilindros}</strong> cilindro(s)<br>
-                Início: <strong>${new Date(currentUsage.dataInicio).toLocaleTimeString('pt-BR')}</strong>
-            </div>`;
+                <i class="fas fa-spinner fa-spin status-icon in-use"></i>
+                <div class="status-text">Em Operação</div>
+                <div class="status-details">
+                    Operador: <strong>${currentUsage.nome}</strong><br>
+                    Tipo: <strong>${currentUsage.tipoCilindro}</strong> —
+                    <strong>${currentUsage.qtdCilindros}</strong> cilindro(s)<br>
+                    Início: <strong>${new Date(currentUsage.dataInicio).toLocaleTimeString('pt-BR')}</strong>
+                </div>`;
             } else {
                 el.innerHTML = `
-            <i class="fas fa-check-circle status-icon available"></i>
-            <div class="status-text">Disponível para Uso</div>
-            <div class="status-details">Nenhuma operação ativa registrada.</div>`;
+                <i class="fas fa-check-circle status-icon available"></i>
+                <div class="status-text">Disponível para Uso</div>
+                <div class="status-details">Nenhuma operação ativa registrada.</div>`;
             }
         }
 
@@ -1951,37 +1977,37 @@
                     : `<span class="cylinder-chip">Final: ${item.pressaoFinal ?? '—'} BAR</span>`;
 
                 const obsHtml = (item.observacaoInicio || item.observacaoFim) ? `
-            <div class="history-obs">
-                ${item.observacaoInicio ? `<span><i class="fas fa-comment-dots"></i><b>Entrada:</b> ${escHtml(item.observacaoInicio)}</span>` : ''}
-                ${item.observacaoFim ? `<span><i class="fas fa-comment-check"></i><b>Saída:</b> ${escHtml(item.observacaoFim)}</span>` : ''}
-            </div>` : '';
+                <div class="history-obs">
+                    ${item.observacaoInicio ? `<span><i class="fas fa-comment-dots"></i><b>Entrada:</b> ${escHtml(item.observacaoInicio)}</span>` : ''}
+                    ${item.observacaoFim ? `<span><i class="fas fa-comment-check"></i><b>Saída:</b> ${escHtml(item.observacaoFim)}</span>` : ''}
+                </div>` : '';
 
                 const badge = item.status === 'ativo'
                     ? `<span class="history-badge badge-active">Em Uso</span>`
                     : `<span class="history-badge badge-completed">Finalizado</span>`;
 
                 return `
-        <div class="history-item">
-            <div class="history-header">
-                <span class="history-user"><i class="fas fa-user-shield"></i> ${escHtml(item.nome)}</span>
-                <div style="display:flex; gap:8px; align-items:center;">
-                    ${badge}
-                    <button class="btn-pdf" onclick="printRecord(${idx})">
-                        <i class="fas fa-file-pdf"></i> PDF
-                    </button>
+            <div class="history-item">
+                <div class="history-header">
+                    <span class="history-user"><i class="fas fa-user-shield"></i> ${escHtml(item.nome)}</span>
+                    <div style="display:flex; gap:8px; align-items:center;">
+                        ${badge}
+                        <button class="btn-pdf" onclick="printRecord(${idx})">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="history-details">
-                <span><i class="fas fa-id-badge"></i> Matrícula: ${escHtml(item.matricula)}</span>
-                <span><i class="fas fa-fire-flame-curved"></i> Tipo: ${escHtml(item.tipoCilindro)}</span>
-                <span><i class="fas fa-calendar-day"></i> ${formatDateBR(item.dataInicio)}</span>
-                <span><i class="fas fa-stopwatch"></i> Tempo: ${item.tempoTotal || '—'}</span>
-                <span><i class="fas fa-gauge"></i> Pressão Inicial: ${item.pressaoInicial ?? '—'} BAR</span>
-                <span><i class="fas fa-cubes"></i> Qtd: ${item.qtdCilindros} cilindro(s)</span>
-            </div>
-            <div class="history-cylinders">${pressoes}</div>
-            ${obsHtml}
-        </div>`;
+                <div class="history-details">
+                    <span><i class="fas fa-id-badge"></i> Matrícula: ${escHtml(item.matricula)}</span>
+                    <span><i class="fas fa-fire-flame-curved"></i> Tipo: ${escHtml(item.tipoCilindro)}</span>
+                    <span><i class="fas fa-calendar-day"></i> ${formatDateBR(item.dataInicio)}</span>
+                    <span><i class="fas fa-stopwatch"></i> Tempo: ${item.tempoTotal || '—'}</span>
+                    <span><i class="fas fa-gauge"></i> Pressão Inicial: ${item.pressaoInicial ?? '—'} BAR</span>
+                    <span><i class="fas fa-cubes"></i> Qtd: ${item.qtdCilindros} cilindro(s)</span>
+                </div>
+                <div class="history-cylinders">${pressoes}</div>
+                ${obsHtml}
+            </div>`;
             }).join('');
         }
 
@@ -1997,33 +2023,33 @@
             const area = document.getElementById('print-area');
             area.style.display = 'block';
             area.innerHTML = `
-        <div class="print-header">
-            <img src="brasao-cbmmg.png" alt="Brasão CBMMG">
-            <div>
-                <h2>Corpo de Bombeiros Militar de Minas Gerais</h2>
-                <p>Sistema de Controle de Compressor e Cilindros — CBMMG</p>
+            <div class="print-header">
+                <img src="brasao-cbmmg.png" alt="Brasão CBMMG">
+                <div>
+                    <h2>Corpo de Bombeiros Militar de Minas Gerais</h2>
+                    <p>Sistema de Controle de Compressor e Cilindros — CBMMG</p>
+                </div>
             </div>
-        </div>
-        <div class="print-title">📋 Relatório de Operação de Recarga</div>
-        <div class="print-row">
-            <div class="print-field"><div class="lbl">Militar Operador</div><div class="val">${escHtml(item.nome)}</div></div>
-            <div class="print-field"><div class="lbl">Matrícula</div><div class="val">${escHtml(item.matricula)}</div></div>
-            <div class="print-field"><div class="lbl">Tipo de Cilindro</div><div class="val">${escHtml(item.tipoCilindro)}</div></div>
-            <div class="print-field"><div class="lbl">Quantidade</div><div class="val">${item.qtdCilindros} cilindro(s)</div></div>
-            <div class="print-field"><div class="lbl">Início</div><div class="val">${formatDateBR(item.dataInicio)}</div></div>
-            <div class="print-field"><div class="lbl">Término</div><div class="val">${item.dataFim ? formatDateBR(item.dataFim) : '—'}</div></div>
-            <div class="print-field"><div class="lbl">Tempo Total de Operação</div><div class="val">${item.tempoTotal || '—'}</div></div>
-            <div class="print-field"><div class="lbl">Pressão Inicial do Lote</div><div class="val">${item.pressaoInicial ?? '—'} BAR</div></div>
-            <div class="print-field"><div class="lbl">Status</div><div class="val">${item.status === 'ativo' ? 'Em Uso' : 'Finalizado'}</div></div>
-        </div>
-        <div class="print-section-title">Pressões Finais por Cilindro</div>
-        <div style="margin-bottom:12px;">${pressoes}</div>
-        ${item.observacaoInicio ? `<div class="print-section-title">Observações de Entrada</div><div class="print-obs">${escHtml(item.observacaoInicio)}</div>` : ''}
-        ${item.observacaoFim ? `<div class="print-section-title">Observações de Saída</div><div class="print-obs">${escHtml(item.observacaoFim)}</div>` : ''}
-        <div class="print-footer">
-            Emitido em ${new Date().toLocaleString('pt-BR')} — BBZU Sistema de Gestão de Cilindros v2.7<br>
-            Desenvolvedor: Gabriel Souza Costa Ferreira | BM: 184.216-0
-        </div>`;
+            <div class="print-title">📋 Relatório de Operação de Recarga</div>
+            <div class="print-row">
+                <div class="print-field"><div class="lbl">Militar Operador</div><div class="val">${escHtml(item.nome)}</div></div>
+                <div class="print-field"><div class="lbl">Matrícula</div><div class="val">${escHtml(item.matricula)}</div></div>
+                <div class="print-field"><div class="lbl">Tipo de Cilindro</div><div class="val">${escHtml(item.tipoCilindro)}</div></div>
+                <div class="print-field"><div class="lbl">Quantidade</div><div class="val">${item.qtdCilindros} cilindro(s)</div></div>
+                <div class="print-field"><div class="lbl">Início</div><div class="val">${formatDateBR(item.dataInicio)}</div></div>
+                <div class="print-field"><div class="lbl">Término</div><div class="val">${item.dataFim ? formatDateBR(item.dataFim) : '—'}</div></div>
+                <div class="print-field"><div class="lbl">Tempo Total de Operação</div><div class="val">${item.tempoTotal || '—'}</div></div>
+                <div class="print-field"><div class="lbl">Pressão Inicial do Lote</div><div class="val">${item.pressaoInicial ?? '—'} BAR</div></div>
+                <div class="print-field"><div class="lbl">Status</div><div class="val">${item.status === 'ativo' ? 'Em Uso' : 'Finalizado'}</div></div>
+            </div>
+            <div class="print-section-title">Pressões Finais por Cilindro</div>
+            <div style="margin-bottom:12px;">${pressoes}</div>
+            ${item.observacaoInicio ? `<div class="print-section-title">Observações de Entrada</div><div class="print-obs">${escHtml(item.observacaoInicio)}</div>` : ''}
+            ${item.observacaoFim ? `<div class="print-section-title">Observações de Saída</div><div class="print-obs">${escHtml(item.observacaoFim)}</div>` : ''}
+            <div class="print-footer">
+                Emitido em ${new Date().toLocaleString('pt-BR')} — BBZU Sistema de Gestão de Cilindros v2.6<br>
+                Desenvolvedor: Gabriel Souza Costa Ferreira | BM: 184.216-0
+            </div>`;
 
             setTimeout(() => {
                 window.print();
@@ -2073,11 +2099,11 @@
                 t = document.createElement('div');
                 t.id = 'toast-msg';
                 t.style.cssText = `
-            position:fixed; bottom:70px; left:50%; transform:translateX(-50%);
-            background:#0f172a; color:#fff; padding:10px 20px; border-radius:50px;
-            font-size:0.82rem; font-weight:600; z-index:9999;
-            box-shadow:0 4px 20px rgba(0,0,0,0.25);
-            transition:opacity 0.3s; white-space:nowrap;`;
+                position:fixed; bottom:70px; left:50%; transform:translateX(-50%);
+                background:#0f172a; color:#fff; padding:10px 20px; border-radius:50px;
+                font-size:0.82rem; font-weight:600; z-index:9999;
+                box-shadow:0 4px 20px rgba(0,0,0,0.25);
+                transition:opacity 0.3s; white-space:nowrap;`;
                 document.body.appendChild(t);
             }
             t.textContent = msg;
