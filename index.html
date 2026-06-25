@@ -859,6 +859,298 @@
                 font-size: 0.7rem;
             }
         }
+
+        /* ===== PAUSA / RETOMADA ===== */
+        .timer-display.paused {
+            background: linear-gradient(135deg, #78350f 0%, #451a03 100%);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+            .timer-display.paused .timer-value {
+                color: #fbbf24;
+                text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+            }
+
+            .timer-display.paused .timer-label::after {
+                content: " — EM PAUSA";
+                color: #fbbf24;
+                font-weight: 800;
+            }
+
+        .pause-btn-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            border: 1px solid #d97706;
+            flex: 1;
+        }
+
+            .btn-warning:hover {
+                transform: translateY(-1.5px);
+                box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+            }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%);
+            color: white;
+            border: 1px solid #b91c1c;
+            flex: 1;
+        }
+
+            .btn-danger:hover {
+                transform: translateY(-1.5px);
+                box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
+            }
+
+        /* ===== CAMPOS DE PRESSÃO POR CILINDRO ===== */
+        .cylinder-pressures-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .cylinder-pressure-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            background: #f1f5f9;
+            border-radius: var(--radius-md);
+            border: 1.5px solid var(--border);
+        }
+
+            .cylinder-pressure-row label {
+                font-size: 0.82rem;
+                font-weight: 700;
+                color: var(--primary);
+                white-space: nowrap;
+                min-width: 80px;
+                margin: 0;
+            }
+
+            .cylinder-pressure-row input {
+                flex: 1;
+                padding: 9px 12px;
+                border: 1.5px solid var(--border);
+                border-radius: 8px;
+                font-size: 0.9rem;
+                font-family: inherit;
+                color: var(--text-dark);
+                transition: border-color 0.2s;
+            }
+
+                .cylinder-pressure-row input:focus {
+                    outline: none;
+                    border-color: var(--primary);
+                    box-shadow: 0 0 0 3px rgba(190, 18, 60, 0.1);
+                }
+
+        .cylinder-badge {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* ===== OBSERVAÇÕES NO HISTÓRICO ===== */
+        .history-obs {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+            .history-obs span {
+                display: flex;
+                gap: 6px;
+            }
+
+            .history-obs i {
+                color: var(--accent);
+                flex-shrink: 0;
+                margin-top: 2px;
+            }
+
+        /* ===== PRESSÕES POR CILINDRO NO HISTÓRICO ===== */
+        .history-cylinders {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .cylinder-chip {
+            padding: 3px 10px;
+            background: #fff1f2;
+            border: 1px solid #fecaca;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* ===== BOTÃO PDF ===== */
+        .btn-pdf {
+            background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+            color: white;
+            border: 1px solid #075985;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            font-family: inherit;
+            transition: all 0.2s;
+            box-shadow: none;
+        }
+
+            .btn-pdf:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);
+            }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body * {
+                visibility: hidden !important;
+            }
+
+            #print-area, #print-area * {
+                visibility: visible !important;
+            }
+
+            #print-area {
+                position: fixed;
+                inset: 0;
+                background: white;
+                padding: 28px 32px;
+                font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+                font-size: 13px;
+                color: #0f172a;
+                z-index: 99999;
+            }
+
+            .print-header {
+                display: flex !important;
+                align-items: center;
+                gap: 16px;
+                border-bottom: 3px solid #be123c;
+                padding-bottom: 14px;
+                margin-bottom: 20px;
+            }
+
+                .print-header img {
+                    width: 54px;
+                    height: 54px;
+                }
+
+                .print-header h2 {
+                    font-size: 15px;
+                    font-weight: 800;
+                    color: #be123c;
+                    margin: 0;
+                }
+
+                .print-header p {
+                    font-size: 11px;
+                    color: #64748b;
+                    margin: 2px 0 0;
+                }
+
+            .print-title {
+                font-size: 17px;
+                font-weight: 800;
+                color: #0f172a;
+                margin-bottom: 16px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .print-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 20px;
+                margin-bottom: 14px;
+            }
+
+            .print-field {
+                margin-bottom: 4px;
+            }
+
+                .print-field .lbl {
+                    font-weight: 700;
+                    color: #be123c;
+                    font-size: 10px;
+                    text-transform: uppercase;
+                }
+
+                .print-field .val {
+                    font-size: 13px;
+                    color: #0f172a;
+                }
+
+            .print-section-title {
+                font-weight: 800;
+                font-size: 12px;
+                text-transform: uppercase;
+                color: #64748b;
+                margin: 14px 0 8px;
+                border-bottom: 1px dashed #cbd5e1;
+                padding-bottom: 4px;
+            }
+
+            .print-chip {
+                display: inline-block;
+                padding: 2px 10px;
+                background: #fff1f2;
+                border: 1px solid #fecaca;
+                border-radius: 50px;
+                font-size: 11px;
+                font-weight: 700;
+                color: #be123c;
+                margin: 3px 3px 0 0;
+            }
+
+            .print-obs {
+                background: #f8fafc;
+                border-left: 3px solid #be123c;
+                padding: 8px 12px;
+                border-radius: 4px;
+                font-size: 12px;
+                line-height: 1.5;
+                margin-bottom: 8px;
+            }
+
+            .print-footer {
+                margin-top: 28px;
+                border-top: 1px solid #e2e8f0;
+                padding-top: 12px;
+                font-size: 10px;
+                color: #94a3b8;
+                text-align: center;
+            }
+        }
+
     </style>
 
     <!-- ========== SUPABASE SDK ========== -->
@@ -1035,15 +1327,24 @@
                     <i class="fas fa-stopwatch"></i>
                     <h2>Cronômetro de Operação</h2>
                 </div>
-                <div class="timer-display">
-                    <div class="timer-value" id="timerDisplay">00:00:00</div>
+                <div class="timer-display" id="timerDisplay">
+                    <div class="timer-value" id="timerValue">00:00:00</div>
                     <div class="timer-label">Tempo decorrido</div>
                 </div>
                 <div class="drain-reminder" id="drainReminder">
                     <i class="fas fa-tint"></i>
-                    <strong>LEMBRETE PERIÓDICO:</strong> Abra a válvula de drenagem de condensado para remover o acúmulo de água!
+                    <strong>LEMBRETE PERIÓDICO:</strong> Abra a válvula de drenagem de condensado!
+                </div>
+                <div class="pause-btn-row">
+                    <button class="btn btn-warning" id="btnPause" onclick="togglePause()">
+                        <i class="fas fa-pause"></i> Pausar (Troca)
+                    </button>
+                    <button class="btn btn-danger" id="btnEmergency" onclick="emergencyStop()">
+                        <i class="fas fa-hand"></i> Parada Emergência
+                    </button>
                 </div>
             </div>
+
 
             <!-- Formulário de Início -->
             <div class="card" id="startForm">
@@ -1096,17 +1397,18 @@
                     <h2>Concluir Utilização</h2>
                 </div>
                 <form id="formEnd">
+                    <!-- Pressões individuais geradas via JS -->
                     <div class="form-group">
-                        <label for="pressaoFinal">Pressão Final Alcançada (BAR)</label>
-                        <input type="number" id="pressaoFinal" min="0" max="300" placeholder="Ex: 300" required>
+                        <label>Pressão Final por Cilindro (BAR)</label>
+                        <div class="cylinder-pressures-wrapper" id="cylinderPressuresContainer"></div>
                     </div>
+
                     <div class="form-group">
                         <label for="observacaoFim">Observações Finais (Opcional)</label>
                         <textarea id="observacaoFim" rows="2" placeholder="Observações pós-recarga ou anomalias percebidas..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label style="margin-bottom: 12px; display: block; font-weight: 600;">Checklist de Segurança Desmobilização</label>
-                        
+                        <label style="margin-bottom: 12px; display: block; font-weight: 600;">Checklist de Segurança — Desmobilização</label>
                         <div class="checklist-item" onclick="toggleCheck(this, event)">
                             <input type="checkbox" id="check1">
                             <span>Compressor desligado (chave rotativa e disjuntor)</span>
@@ -1134,127 +1436,127 @@
                     </button>
                 </form>
             </div>
-        </div>
 
-        <!-- Tab: Histórico -->
-        <div class="tab-content" id="historico">
-            <div class="card">
-                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%;">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <i class="fas fa-history"></i>
-                        <h2>Registros Recentes de Operação</h2>
+
+            <!-- Tab: Histórico -->
+            <div class="tab-content" id="historico">
+                <div class="card">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <i class="fas fa-history"></i>
+                            <h2>Registros Recentes de Operação</h2>
+                        </div>
+                        <button id="btnLimparHistorico" class="btn" style="background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%); color: white; padding: 8px 16px; font-size: 0.8rem; border-radius: var(--radius-md); box-shadow: none;">
+                            <i class="fas fa-trash-can"></i> Limpar Histórico
+                        </button>
                     </div>
-                    <button id="btnLimparHistorico" class="btn" style="background: linear-gradient(135deg, var(--danger) 0%, #b91c1c 100%); color: white; padding: 8px 16px; font-size: 0.8rem; border-radius: var(--radius-md); box-shadow: none;">
-                        <i class="fas fa-trash-can"></i> Limpar Histórico
-                    </button>
+                    <div id="historyList">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Nenhum registro localizado no dispositivo local.</span>
+                        </div>
+                    </div>
                 </div>
-                <div id="historyList">
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h2>Métricas Consoladas</h2>
+                    </div>
+                    <div id="statsDisplay">
+                        <div class="form-row">
+                            <div class="pressure-card pa">
+                                <h3>Total de Utilizações</h3>
+                                <div class="value" id="totalUsos">0</div>
+                            </div>
+                            <div class="pressure-card mergulho">
+                                <h3>Cilindros Carregados</h3>
+                                <div class="value" id="totalCilindros">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Segurança -->
+            <div class="tab-content" id="seguranca">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Regras Gerais de Segurança</h2>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <i class="fas fa-ban"></i>
+                        <div>
+                            <strong>ATENÇÃO — SEGURANÇA EM PRIMEIRO LUGAR</strong><br>
+                            A manipulação de fluidos pressurizados apresenta risco mecânico extremo. Linhas sob pressão que se rompem podem golpear violentamente os operadores. Nunca ultrapasse os limites indicados de cada cilindro.
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" style="cursor: default;">
+                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                        <span>Sempre faça a inspeção prévia de conexões e fixação das mangueiras.</span>
+                    </div>
+                    <div class="checklist-item" style="cursor: default;">
+                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                        <span>NUNCA se afaste do compressor enquanto ele estiver em funcionamento.</span>
+                    </div>
+                    <div class="checklist-item" style="cursor: default;">
+                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                        <span>Em caso de vazamentos abruptos ou ruídos estranhos, pressione o botão de paragem de emergência.</span>
+                    </div>
+                    <div class="checklist-item" style="cursor: default;">
+                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                        <span>Certifique-se de que os EPIs regulamentares estão devidamente ajustados ao operador.</span>
+                    </div>
+                    <div class="checklist-item" style="cursor: default;">
+                        <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
+                        <span>Não tente desconectar conexões sob pressão; sempre despressurize as mangueiras pelas válvulas de alívio.</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-tools"></i>
+                        <h2>Equipamentos de Proteção Individual (EPI) Obrigatórios</h2>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div class="checklist-item" style="cursor: default;">
+                            <i class="fas fa-glasses" style="color: var(--primary); font-size: 1.3rem;"></i>
+                            <span>Óculos de Proteção Balística ou Industrial</span>
+                        </div>
+                        <div class="checklist-item" style="cursor: default;">
+                            <i class="fas fa-hand" style="color: var(--primary); font-size: 1.3rem;"></i>
+                            <span>Luvas de Couro ou Raspa de Proteção Mecânica</span>
+                        </div>
+                        <div class="checklist-item" style="cursor: default;">
+                            <i class="fas fa-ear-deaf" style="color: var(--primary); font-size: 1.3rem;"></i>
+                            <span>Abafador de Ruídos Auricular Concha ou Plugue</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-phone-alt"></i>
+                        <h2>Protocolo de Emergência Médica</h2>
+                    </div>
                     <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Nenhum registro localizado no dispositivo local.</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-chart-bar"></i>
-                    <h2>Métricas Consoladas</h2>
-                </div>
-                <div id="statsDisplay">
-                    <div class="form-row">
-                        <div class="pressure-card pa">
-                            <h3>Total de Utilizações</h3>
-                            <div class="value" id="totalUsos">0</div>
-                        </div>
-                        <div class="pressure-card mergulho">
-                            <h3>Cilindros Carregados</h3>
-                            <div class="value" id="totalCilindros">0</div>
+                        <i class="fas fa-ambulance"></i>
+                        <div>
+                            <strong>Em caso de acidentes com lesão física:</strong><br>
+                            1. Desligue imediatamente o interruptor de força geral.<br>
+                            2. Isole e evacue o ambiente onde se encontra o sistema.<br>
+                            3. Comunique de imediato o Oficial de Dia da Unidade Operacional.<br>
+                            4. Preste suporte de primeiros socorros e acione assistência médica especializada (193/192).
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Tab: Segurança -->
-        <div class="tab-content" id="seguranca">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h2>Regras Gerais de Segurança</h2>
-                </div>
-
-                <div class="alert alert-danger">
-                    <i class="fas fa-ban"></i>
-                    <div>
-                        <strong>ATENÇÃO — SEGURANÇA EM PRIMEIRO LUGAR</strong><br>
-                        A manipulação de fluidos pressurizados apresenta risco mecânico extremo. Linhas sob pressão que se rompem podem golpear violentamente os operadores. Nunca ultrapasse os limites indicados de cada cilindro.
-                    </div>
-                </div>
-
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>Sempre faça a inspeção prévia de conexões e fixação das mangueiras.</span>
-                </div>
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>NUNCA se afaste do compressor enquanto ele estiver em funcionamento.</span>
-                </div>
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>Em caso de vazamentos abruptos ou ruídos estranhos, pressione o botão de paragem de emergência.</span>
-                </div>
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>Certifique-se de que os EPIs regulamentares estão devidamente ajustados ao operador.</span>
-                </div>
-                <div class="checklist-item" style="cursor: default;">
-                    <i class="fas fa-shield-halved" style="color: var(--primary); font-size: 1.1rem;"></i>
-                    <span>Não tente desconectar conexões sob pressão; sempre despressurize as mangueiras pelas válvulas de alívio.</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-tools"></i>
-                    <h2>Equipamentos de Proteção Individual (EPI) Obrigatórios</h2>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-glasses" style="color: var(--primary); font-size: 1.3rem;"></i>
-                        <span>Óculos de Proteção Balística ou Industrial</span>
-                    </div>
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-hand" style="color: var(--primary); font-size: 1.3rem;"></i>
-                        <span>Luvas de Couro ou Raspa de Proteção Mecânica</span>
-                    </div>
-                    <div class="checklist-item" style="cursor: default;">
-                        <i class="fas fa-ear-deaf" style="color: var(--primary); font-size: 1.3rem;"></i>
-                        <span>Abafador de Ruídos Auricular Concha ou Plugue</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-phone-alt"></i>
-                    <h2>Protocolo de Emergência Médica</h2>
-                </div>
-                <div class="alert alert-info">
-                    <i class="fas fa-ambulance"></i>
-                    <div>
-                        <strong>Em caso de acidentes com lesão física:</strong><br>
-                        1. Desligue imediatamente o interruptor de força geral.<br>
-                        2. Isole e evacue o ambiente onde se encontra o sistema.<br>
-                        3. Comunique de imediato o Oficial de Dia da Unidade Operacional.<br>
-                        4. Preste suporte de primeiros socorros e acione assistência médica especializada (193/192).
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
-    
+
     <!-- Footer -->
     <footer class="footer">
         <p><strong>© 2026 BBZU - Bombeiro Bizurado</strong></p>
@@ -1264,6 +1566,8 @@
         </p>
     </footer>
 
+    <!-- Área de Impressão PDF (oculta na tela) -->
+    <div id="print-area" style="display:none;"></div>
 
     <!-- Modal de Confirmação -->
     <div class="modal-overlay" id="modalConfirm">
@@ -1311,14 +1615,17 @@
         let timerInterval = null;
         let drainInterval = null;
         let startTime = null;
+        let pausedAt = null;      // timestamp do momento da pausa
+        let totalPaused = 0;         // ms acumulados em pausa
+        let isPaused = false;
         let usageHistory = [];
         let supabaseConnected = false;
 
-        // ===== AUXILIAR DE TRATAMENTO DE DATAS (PREVINE BUG DO CRONÔMETRO NaN / INFINITO) =====
-        function safeParseDate(dateVal) {
-            if (!dateVal || dateVal === 'null' || dateVal === 'undefined') return null;
-            const parsed = new Date(dateVal);
-            return isNaN(parsed.getTime()) ? null : parsed;
+        // ===== AUXILIAR DE DATAS =====
+        function safeParseDate(v) {
+            if (!v || v === 'null' || v === 'undefined') return null;
+            const d = new Date(v);
+            return isNaN(d.getTime()) ? null : d;
         }
 
         // ===== NAVEGAÇÃO DE ABAS =====
@@ -1327,47 +1634,32 @@
                 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                 tab.classList.add('active');
-                
-                const targetTab = document.getElementById(tab.dataset.tab);
-                if (targetTab) {
-                    targetTab.classList.add('active');
-                }
+                const target = document.getElementById(tab.dataset.tab);
+                if (target) target.classList.add('active');
             });
         });
 
         // ===== INDICADOR DE CONEXÃO =====
         function updateSyncStatus(connected, message) {
-            const statusEl = document.getElementById('syncStatus');
-            if (!statusEl) return;
-            
-            if (connected) {
-                statusEl.className = 'sync-status online';
-                statusEl.innerHTML = `<i class="fas fa-cloud"></i><span>${message || 'Sincronizado'}</span>`;
-            } else {
-                statusEl.className = 'sync-status offline';
-                statusEl.innerHTML = `<i class="fas fa-cloud-slash"></i><span>${message || 'Offline'}</span>`;
-            }
+            const el = document.getElementById('syncStatus');
+            if (!el) return;
+            el.className = 'sync-status ' + (connected ? 'online' : 'offline');
+            el.innerHTML = `<i class="fas fa-${connected ? 'cloud' : 'cloud-slash'}"></i><span>${message || (connected ? 'Sincronizado' : 'Offline')}</span>`;
         }
 
-        // ===== SUPABASE - CARREGAR E SINCRONIZAR =====
+        // ===== SUPABASE — CARREGAR HISTÓRICO =====
         async function loadHistoryFromSupabase() {
             if (!window.supabaseClient) {
-                console.warn('⚠️ Supabase não inicializado. Carregando dados locais de fallback.');
                 usageHistory = JSON.parse(localStorage.getItem('usageHistory')) || [];
                 updateSyncStatus(false, 'Modo Local');
-                updateHistory();
-                updateStats();
-                return;
+                updateHistory(); updateStats(); return;
             }
-
             try {
                 const { data, error } = await window.supabaseClient
                     .from('utilizacoes')
                     .select('*')
                     .order('criado_em', { ascending: false });
-
                 if (error) throw error;
-
                 if (data) {
                     usageHistory = data.map(item => ({
                         id: item.id,
@@ -1376,7 +1668,8 @@
                         tipoCilindro: item.tipo_cilindro,
                         qtdCilindros: item.qtd_cilindros,
                         pressaoInicial: item.pressao_inicial,
-                        pressaoFinal: item.pressao_final,
+                        pressoesFinal: item.pressoes_final || [],   // array por cilindro
+                        pressaoFinal: item.pressao_final,           // compatibilidade legada
                         dataInicio: item.data_inicio,
                         dataFim: item.data_fim,
                         tempoTotal: item.tempo_total,
@@ -1384,577 +1677,449 @@
                         observacaoFim: item.observacao_fim,
                         status: item.status
                     }));
-
                     localStorage.setItem('usageHistory', JSON.stringify(usageHistory));
                     supabaseConnected = true;
                     updateSyncStatus(true, 'Sincronizado');
                 }
-
-                updateHistory();
-                updateStats();
+                updateHistory(); updateStats();
                 setupRealtimeSubscription();
-
-            } catch (error) {
-                console.error('❌ Erro ao buscar dados na nuvem:', error);
+            } catch (err) {
+                console.error('❌ Supabase erro:', err);
                 usageHistory = JSON.parse(localStorage.getItem('usageHistory')) || [];
-                updateSyncStatus(false, 'Erro de Conexão');
-                updateHistory();
-                updateStats();
+                updateSyncStatus(false, 'Modo Local');
+                updateHistory(); updateStats();
             }
         }
 
-        // ===== SUBSCRITOR DE EVENTOS EM TEMPO REAL =====
+        // ===== REALTIME =====
         function setupRealtimeSubscription() {
             if (!window.supabaseClient) return;
-
             window.supabaseClient
-                .channel('utilizacoes-realtime')
-                .on('postgres_changes',
-                    { event: '*', schema: 'public', table: 'utilizacoes' },
-                    (payload) => {
-                        updateSyncStatus(true, 'Atualizando...');
-                        loadHistoryFromSupabase();
-                    }
-                )
-                .subscribe((status) => {
-                    if (status === 'SUBSCRIBED') {
-                        console.log('Tempo real ativo.');
-                    }
-                });
+                .channel('utilizacoes-changes')
+                .on('postgres_changes', { event: '*', schema: 'public', table: 'utilizacoes' }, () => {
+                    loadHistoryFromSupabase();
+                })
+                .subscribe();
         }
 
-        // ===== PERSISTIR OPERAÇÃO NO SUPABASE =====
-        async function saveToSupabase(usage) {
-            if (!window.supabaseClient) {
-                console.warn('⚠️ Banco de dados em nuvem indisponível.');
-                return false;
-            }
-
-            try {
-                const { data, error } = await window.supabaseClient
-                    .from('utilizacoes')
-                    .insert({
-                        nome: usage.nome,
-                        matricula: usage.matricula,
-                        tipo_cilindro: usage.tipoCilindro,
-                        qtd_cilindros: usage.qtdCilindros,
-                        pressao_inicial: usage.pressaoInicial,
-                        pressao_final: usage.pressaoFinal,
-                        data_inicio: usage.dataInicio,
-                        data_fim: usage.dataFim,
-                        tempo_total: usage.tempoTotal,
-                        observacao_inicio: usage.observacaoInicio,
-                        observacao_fim: usage.observacaoFim,
-                        status: usage.status
-                    })
-                    .select();
-
-                if (error) throw error;
-
-                if (data && data[0]) {
-                    usage.id = data[0].id;
-                }
-
-                updateSyncStatus(true, 'Salvo na Nuvem');
-                return true;
-
-            } catch (error) {
-                console.error('❌ Erro ao enviar registro:', error.message);
-                updateSyncStatus(false, 'Erro ao salvar');
-                return false;
-            }
+        // ===== TIMER =====
+        function formatTime(ms) {
+            if (!ms || ms < 0) ms = 0;
+            const totalSec = Math.floor(ms / 1000);
+            const h = Math.floor(totalSec / 3600);
+            const m = Math.floor((totalSec % 3600) / 60);
+            const s = totalSec % 60;
+            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }
 
-        // ===== FORMULÁRIO DE INÍCIO =====
-        document.getElementById('formStart').addEventListener('submit', function (e) {
-            e.preventDefault();
+        function getElapsedMs() {
+            if (!startTime) return 0;
+            const now = isPaused ? pausedAt : Date.now();
+            return (now - startTime) - totalPaused;
+        }
 
-            const nome = document.getElementById('militarNome').value;
-            const matricula = document.getElementById('militarMatricula').value;
-            const tipo = document.getElementById('tipoCilindro').value;
-            const qtd = document.getElementById('qtdCilindros').value;
-            const pressaoInicial = document.getElementById('pressaoInicial').value;
-            const obs = document.getElementById('observacaoInicio').value;
-
-            startTime = new Date();
-
-            currentUsage = {
-                id: Date.now(),
-                nome: nome,
-                matricula: matricula,
-                tipoCilindro: tipo,
-                qtdCilindros: parseInt(qtd),
-                pressaoInicial: pressaoInicial || 'N/I',
-                dataInicio: startTime.toISOString(),
-                observacaoInicio: obs,
-                status: 'em_andamento'
-            };
-
-            updateStatusInUse();
-            startTimer();
-            startDrainReminder();
-
-            document.getElementById('startForm').style.display = 'none';
-            document.getElementById('endForm').style.display = 'block';
-            document.getElementById('timerCard').style.display = 'block';
-
-            localStorage.setItem('currentUsage', JSON.stringify(currentUsage));
-            localStorage.setItem('startTime', startTime.toISOString());
-
-            showModal('Utilização iniciada com sucesso!<br>Operador: <strong>' + nome + '</strong>');
-        });
-
-        // ===== FORMULÁRIO DE FINALIZAÇÃO =====
-        document.getElementById('formEnd').addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const checkboxes = document.querySelectorAll('#formEnd input[type="checkbox"]');
-            let allChecked = true;
-            checkboxes.forEach(cb => {
-                if (!cb.checked) allChecked = false;
-            });
-
-            if (!allChecked) {
-                alert('Preencha todos os pontos de segurança obrigatórios para despressurizar.');
-                return;
-            }
-
-            const pressaoFinal = document.getElementById('pressaoFinal').value;
-            const obs = document.getElementById('observacaoFim').value;
-
-            currentUsage.pressaoFinal = pressaoFinal;
-            currentUsage.observacaoFim = obs;
-            currentUsage.dataFim = new Date().toISOString();
-            currentUsage.tempoTotal = document.getElementById('timerDisplay').textContent;
-            currentUsage.status = 'finalizado';
-
-            // Armazenamento local imediato
-            usageHistory.unshift(currentUsage);
-            localStorage.setItem('usageHistory', JSON.stringify(usageHistory));
-
-            // Envio para o Supabase
-            await saveToSupabase(currentUsage);
-
-            // Reseta chaves do contador ativo
-            localStorage.removeItem('currentUsage');
-            localStorage.removeItem('startTime');
-
-            stopTimer();
-            stopDrainReminder();
-            resetUI();
-            updateHistory();
-            updateStats();
-
-            showModal('Operação concluída com sucesso!<br>Tempo total: <strong>' + currentUsage.tempoTotal + '</strong>');
-
-            currentUsage = null;
-        });
-
-        // ===== OPERAÇÃO DO CRONÔMETRO (TRAVADO CONTRA NA/NaN E OVERFLOWS) =====
         function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            timerInterval = setInterval(updateTimer, 1000);
+            stopTimer();
+            isPaused = false;
+            totalPaused = 0;
+            pausedAt = null;
+            startTime = Date.now();
+            updateTimerUI();
+            timerInterval = setInterval(() => {
+                if (isPaused) return;
+                updateTimerUI();
+                checkDrainReminder();
+            }, 1000);
         }
 
         function stopTimer() {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
+            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+            if (drainInterval) { clearInterval(drainInterval); drainInterval = null; }
+        }
+
+        function updateTimerUI() {
+            const el = document.getElementById('timerValue');
+            if (el) el.textContent = formatTime(getElapsedMs());
+        }
+
+        // ===== PAUSA/RETOMADA =====
+        function togglePause() {
+            const btn = document.getElementById('btnPause');
+            const display = document.getElementById('timerDisplay');
+            if (!isPaused) {
+                isPaused = true;
+                pausedAt = Date.now();
+                if (btn) { btn.innerHTML = '<i class="fas fa-play"></i> Retomar'; btn.style.background = 'linear-gradient(135deg, #10b981 0%, #047857 100%)'; }
+                if (display) display.classList.add('paused');
+                showToast('⏸ Timer pausado — troque o cilindro e retome quando reiniciar o enchimento.');
+            } else {
+                totalPaused += Date.now() - pausedAt;
+                pausedAt = null;
+                isPaused = false;
+                if (btn) { btn.innerHTML = '<i class="fas fa-pause"></i> Pausar (Troca)'; btn.style.background = ''; }
+                if (display) display.classList.remove('paused');
+                showToast('▶ Timer retomado!');
             }
         }
 
-        function updateTimer() {
-            if (!startTime || isNaN(startTime.getTime())) {
-                document.getElementById('timerDisplay').textContent = "00:00:00";
-                return;
-            }
-
-            const now = new Date();
-            let diff = now - startTime;
-
-            if (diff < 0) diff = 0; // Previne cronometragem negativa por alteração de fuso
-
-            // Caso o cronômetro esteja corrompido ou ativo por mais de 12 horas por esquecimento, limitamos amigavelmente
-            if (diff > 43200000) { 
-                diff = 0;
-                stopTimer();
-                resetUI();
-                localStorage.removeItem('currentUsage');
-                localStorage.removeItem('startTime');
-                return;
-            }
-
-            const hours = Math.floor(diff / 3600000);
-            const minutes = Math.floor((diff % 3600000) / 60000);
-            const seconds = Math.floor((diff % 60000) / 1000);
-
-            const displayString = 
-                String(hours).padStart(2, '0') + ':' +
-                String(minutes).padStart(2, '0') + ':' +
-                String(seconds).padStart(2, '0');
-
-            document.getElementById('timerDisplay').textContent = displayString;
-
-            // Monitora limite de tempo do motor do compressor (alerta vermelho se passar de 1 hora)
-            const timerCard = document.querySelector('.timer-display');
-            if (timerCard) {
-                if (diff >= 3600000) { // Limite de 1 hora
-                    timerCard.style.background = 'linear-gradient(135deg, #ef4444 0%, #991b1b 100%)';
-                    timerCard.style.boxShadow = '0 0 15px rgba(239, 68, 68, 0.4)';
-                } else {
-                    timerCard.style.background = 'linear-gradient(135deg, var(--navy) 0%, #1e293b 100%)';
-                    timerCard.style.boxShadow = 'inset 0 2px 8px rgba(0,0,0,0.3)';
-                }
-            }
-        }
-
-        // ===== LEMBRETE DE DRENAGEM RECORRENTE A CADA 5 MINUTOS =====
-        function startDrainReminder() {
-            if (drainInterval) clearInterval(drainInterval);
-            drainInterval = setInterval(() => {
-                // 1. Mostrar o lembrete piscando na aba de registro
-                const reminder = document.getElementById('drainReminder');
-                if (reminder) {
-                    reminder.classList.add('show');
-                }
-                
-                // 2. Disparar o modal de alerta invasivo na tela
-                showDrainModal();
-                
-                // 3. Tocar um aviso sonoro sintetizado nativo
-                tocarAlertaSonoro();
-            }, 300000); // Exibe a cada 5 minutos (300000 ms)
-        }
-
-        // ===== PARAR LEMBRETE DE DRENAGEM =====
-        function stopDrainReminder() {
-            if (drainInterval) {
-                clearInterval(drainInterval);
-                drainInterval = null;
-            }
-        }
-
-        // ===== GERADOR DE AVISO SONORO SINTETIZADO (WEB AUDIO API) =====
-        function tocarAlertaSonoro() {
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                if (!audioCtx) return;
-                
-                const osc = audioCtx.createOscillator();
-                const gainNode = audioCtx.createGain();
-                
-                osc.connect(gainNode);
-                gainNode.connect(audioCtx.destination);
-                
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // Frequência do bipe (Lá)
-                
-                // Padrão de bipe duplo e audível
-                gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-                gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.1);
-                gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime + 0.3);
-                gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.4);
-                
-                gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.5);
-                gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime + 0.7);
-                gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.8);
-                
-                osc.start();
-                osc.stop(audioCtx.currentTime + 1.2);
-            } catch (err) {
-                console.warn("Áudio não suportado ou bloqueado pelo navegador:", err);
-            }
-        }
-
-        // ===== INDICADOR DE PAINEL ATIVO =====
-        function updateStatusInUse() {
-            const statusDiv = document.getElementById('usageStatus');
-            if (!statusDiv) return;
-            statusDiv.innerHTML = `
-                <i class="fas fa-cog fa-spin status-icon in-use"></i>
-                <div class="status-text">Operação Ativa</div>
-                <div class="status-details">
-                    Militar Operador: <strong>${currentUsage.nome}</strong><br>
-                    Cilindros em recarga: ${currentUsage.tipoCilindro} — Lote de ${currentUsage.qtdCilindros} unidade(s)
-                </div>
-            `;
-        }
-
-        // ===== LIMPAR PAINEL OPERACIONAL =====
-        function resetUI() {
-            document.getElementById('usageStatus').innerHTML = `
-                <i class="fas fa-check-circle status-icon available"></i>
-                <div class="status-text">Disponível para Uso</div>
-                <div class="status-details">Nenhuma operação ativa registrada.</div>
-            `;
-
+        function emergencyStop() {
+            if (!confirm('⚠️ PARADA DE EMERGÊNCIA\n\nIsso encerrará o registro imediatamente sem checklist.\nConfirmar?')) return;
+            stopTimer();
+            currentUsage = null;
+            localStorage.removeItem('currentUsage');
+            updateUsageStatus();
+            document.getElementById('timerCard').style.display = 'none';
             document.getElementById('startForm').style.display = 'block';
             document.getElementById('endForm').style.display = 'none';
-            document.getElementById('timerCard').style.display = 'none';
+            showToast('🛑 Parada de emergência registrada.');
+        }
 
-            document.getElementById('formStart').reset();
+        // ===== DRENAGEM =====
+        let drainElapsed = 0;
+        function checkDrainReminder() {
+            drainElapsed++;
+            if (drainElapsed > 0 && drainElapsed % 300 === 0) { // a cada 5 min
+                document.getElementById('modalDrain').classList.add('show');
+            }
+        }
+        function closeDrainModal() {
+            document.getElementById('modalDrain').classList.remove('show');
+        }
+
+        // ===== GERAR CAMPOS DE PRESSÃO FINAL =====
+        function renderCylinderPressureFields(qty) {
+            const container = document.getElementById('cylinderPressuresContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            for (let i = 1; i <= qty; i++) {
+                container.innerHTML += `
+            <div class="cylinder-pressure-row">
+                <div class="cylinder-badge">${i}</div>
+                <label>Cilindro ${i}</label>
+                <input type="number" id="pressaoFinal_${i}" min="0" max="300"
+                       placeholder="Ex: 300" required>
+            </div>`;
+            }
+        }
+
+        // ===== STATUS =====
+        function updateUsageStatus() {
+            const el = document.getElementById('usageStatus');
+            if (!el) return;
+            if (currentUsage) {
+                el.innerHTML = `
+            <i class="fas fa-spinner fa-spin status-icon in-use"></i>
+            <div class="status-text">Em Operação</div>
+            <div class="status-details">
+                Operador: <strong>${currentUsage.nome}</strong><br>
+                Tipo: <strong>${currentUsage.tipoCilindro}</strong> — 
+                <strong>${currentUsage.qtdCilindros}</strong> cilindro(s)<br>
+                Início: <strong>${new Date(currentUsage.dataInicio).toLocaleTimeString('pt-BR')}</strong>
+            </div>`;
+            } else {
+                el.innerHTML = `
+            <i class="fas fa-check-circle status-icon available"></i>
+            <div class="status-text">Disponível para Uso</div>
+            <div class="status-details">Nenhuma operação ativa registrada.</div>`;
+            }
+        }
+
+        // ===== FORMULÁRIO — INICIAR =====
+        document.getElementById('formStart').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const qty = parseInt(document.getElementById('qtdCilindros').value) || 1;
+            currentUsage = {
+                id: Date.now().toString(),
+                nome: document.getElementById('militarNome').value.trim(),
+                matricula: document.getElementById('militarMatricula').value.trim(),
+                tipoCilindro: document.getElementById('tipoCilindro').value,
+                qtdCilindros: qty,
+                pressaoInicial: document.getElementById('pressaoInicial').value || null,
+                observacaoInicio: document.getElementById('observacaoInicio').value.trim() || null,
+                dataInicio: new Date().toISOString(),
+                status: 'ativo'
+            };
+            localStorage.setItem('currentUsage', JSON.stringify(currentUsage));
+            startTimer();
+            renderCylinderPressureFields(qty);
+            document.getElementById('startForm').style.display = 'none';
+            document.getElementById('timerCard').style.display = 'block';
+            document.getElementById('endForm').style.display = 'block';
+            updateUsageStatus();
+            showModal('Operação iniciada! Cronômetro em andamento.');
+
+            // Salva no Supabase como "ativo"
+            if (window.supabaseClient) {
+                try {
+                    await window.supabaseClient.from('utilizacoes').insert([{
+                        nome: currentUsage.nome,
+                        matricula: currentUsage.matricula,
+                        tipo_cilindro: currentUsage.tipoCilindro,
+                        qtd_cilindros: currentUsage.qtdCilindros,
+                        pressao_inicial: currentUsage.pressaoInicial,
+                        observacao_inicio: currentUsage.observacaoInicio,
+                        data_inicio: currentUsage.dataInicio,
+                        status: 'ativo'
+                    }]);
+                } catch (err) { console.warn('Supabase insert erro:', err); }
+            }
+        });
+
+        // ===== FORMULÁRIO — ENCERRAR =====
+        document.getElementById('formEnd').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const qty = currentUsage ? currentUsage.qtdCilindros : 1;
+            const pressoes = [];
+            for (let i = 1; i <= qty; i++) {
+                const v = document.getElementById(`pressaoFinal_${i}`)?.value;
+                pressoes.push(v ? parseInt(v) : null);
+            }
+            const obsInicio = currentUsage?.observacaoInicio || '';
+            const obsFim = document.getElementById('observacaoFim').value.trim() || '';
+            const elapsed = getElapsedMs();
+            const tempoTotal = formatTime(elapsed);
+            const now = new Date().toISOString();
+
+            const record = {
+                ...currentUsage,
+                pressoesFinal: pressoes,
+                pressaoFinal: pressoes[pressoes.length - 1],  // compatibilidade
+                observacaoFim: obsFim,
+                dataFim: now,
+                tempoTotal,
+                status: 'finalizado'
+            };
+
+            stopTimer();
+            usageHistory.unshift(record);
+            localStorage.setItem('usageHistory', JSON.stringify(usageHistory));
+
+            if (window.supabaseClient) {
+                try {
+                    await window.supabaseClient.from('utilizacoes').insert([{
+                        nome: record.nome,
+                        matricula: record.matricula,
+                        tipo_cilindro: record.tipoCilindro,
+                        qtd_cilindros: record.qtdCilindros,
+                        pressao_inicial: record.pressaoInicial,
+                        pressoes_final: pressoes,
+                        pressao_final: record.pressaoFinal,
+                        observacao_inicio: obsInicio,
+                        observacao_fim: obsFim,
+                        data_inicio: record.dataInicio,
+                        data_fim: now,
+                        tempo_total: tempoTotal,
+                        status: 'finalizado'
+                    }]);
+                } catch (err) { console.warn('Supabase insert finalizado erro:', err); }
+            }
+
+            currentUsage = null;
+            isPaused = false;
+            totalPaused = 0;
+            localStorage.removeItem('currentUsage');
+
+            document.getElementById('timerCard').style.display = 'none';
+            document.getElementById('endForm').style.display = 'none';
+            document.getElementById('startForm').style.display = 'block';
+
+            // Reset checklist
+            document.querySelectorAll('#formEnd .checklist-item').forEach(item => {
+                item.classList.remove('checked');
+                const cb = item.querySelector('input[type="checkbox"]');
+                if (cb) cb.checked = false;
+            });
             document.getElementById('formEnd').reset();
 
-            document.querySelectorAll('#formEnd input[type="checkbox"]').forEach(cb => {
-                cb.checked = false;
-                const wrapper = cb.closest('.checklist-item');
-                if (wrapper) wrapper.classList.remove('checked');
-            });
+            updateUsageStatus();
+            updateHistory();
+            updateStats();
+            showModal(`Operação encerrada com sucesso!\nTempo total: ${tempoTotal}`);
+        });
 
-            document.getElementById('timerDisplay').textContent = '00:00:00';
-            const timerCard = document.querySelector('.timer-display');
-            if (timerCard) {
-                timerCard.style.background = 'linear-gradient(135deg, var(--navy) 0%, #1e293b 100%)';
-                timerCard.style.boxShadow = 'inset 0 2px 8px rgba(0,0,0,0.3)';
-            }
-        }
-
-        // ===== IMPRIMIR ELEMENTO DO HISTÓRICO =====
+        // ===== HISTÓRICO =====
         function updateHistory() {
-            const historyDiv = document.getElementById('historyList');
-            if (!historyDiv) return;
-
-            if (usageHistory.length === 0) {
-                historyDiv.innerHTML = `
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Nenhum registro localizado no dispositivo local.</span>
-                    </div>
-                `;
+            const container = document.getElementById('historyList');
+            if (!container) return;
+            if (!usageHistory.length) {
+                container.innerHTML = `<div class="alert alert-info"><i class="fas fa-info-circle"></i><span>Nenhum registro localizado.</span></div>`;
                 return;
             }
+            container.innerHTML = usageHistory.map((item, idx) => {
+                const pressoes = item.pressoesFinal?.length
+                    ? item.pressoesFinal.map((p, i) => `<span class="cylinder-chip">Cil. ${i + 1}: ${p ?? '—'} BAR</span>`).join('')
+                    : `<span class="cylinder-chip">Final: ${item.pressaoFinal ?? '—'} BAR</span>`;
 
-            let html = '';
-            usageHistory.forEach(usage => {
-                const parsedDate = safeParseDate(usage.dataInicio);
-                const dataFormatada = parsedDate 
-                    ? parsedDate.toLocaleDateString('pt-BR') + ' às ' + parsedDate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-                    : 'Data Indeterminada';
+                const obsHtml = (item.observacaoInicio || item.observacaoFim) ? `
+            <div class="history-obs">
+                ${item.observacaoInicio ? `<span><i class="fas fa-comment-dots"></i><b>Entrada:</b> ${escHtml(item.observacaoInicio)}</span>` : ''}
+                ${item.observacaoFim ? `<span><i class="fas fa-comment-check"></i><b>Saída:</b> ${escHtml(item.observacaoFim)}</span>` : ''}
+            </div>` : '';
 
-                const badgeClass = usage.status === 'finalizado' ? 'badge-completed' : 'badge-active';
-                const badgeText = usage.status === 'finalizado' ? 'Finalizado' : 'Ativo';
+                const badge = item.status === 'ativo'
+                    ? `<span class="history-badge badge-active">Em Uso</span>`
+                    : `<span class="history-badge badge-completed">Finalizado</span>`;
 
-                html += `
-                    <div class="history-item">
-                        <div class="history-header">
-                            <span class="history-user">${usage.nome}</span>
-                            <span class="history-badge ${badgeClass}">${badgeText}</span>
-                        </div>
-                        <div class="history-details">
-                            <div><i class="fas fa-id-card"></i> Matrícula: ${usage.matricula}</div>
-                            <div><i class="fas fa-fire-extinguisher"></i> Tipo: ${usage.tipoCilindro}</div>
-                            <div><i class="fas fa-calendar-alt"></i> Data: ${dataFormatada}</div>
-                            <div><i class="fas fa-clock"></i> Tempo Total: ${usage.tempoTotal || 'Ativo'}</div>
-                            <div><i class="fas fa-tachometer-alt"></i> Pressão: ${usage.pressaoInicial || '0'} → ${usage.pressaoFinal || '...'} BAR</div>
-                            <div><i class="fas fa-boxes"></i> Qtd: ${usage.qtdCilindros} cilindro(s)</div>
-                        </div>
-                    </div>
-                `;
-            });
-
-            historyDiv.innerHTML = html;
+                return `
+        <div class="history-item">
+            <div class="history-header">
+                <span class="history-user"><i class="fas fa-user-shield"></i> ${escHtml(item.nome)}</span>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    ${badge}
+                    <button class="btn-pdf" onclick="printRecord(${idx})">
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </button>
+                </div>
+            </div>
+            <div class="history-details">
+                <span><i class="fas fa-id-badge"></i> Matrícula: ${escHtml(item.matricula)}</span>
+                <span><i class="fas fa-fire-flame-curved"></i> Tipo: ${escHtml(item.tipoCilindro)}</span>
+                <span><i class="fas fa-calendar-day"></i> ${formatDateBR(item.dataInicio)}</span>
+                <span><i class="fas fa-stopwatch"></i> Tempo: ${item.tempoTotal || '—'}</span>
+                <span><i class="fas fa-gauge"></i> Pressão Inicial: ${item.pressaoInicial ?? '—'} BAR</span>
+                <span><i class="fas fa-cubes"></i> Qtd: ${item.qtdCilindros} cilindro(s)</span>
+            </div>
+            <div class="history-cylinders">${pressoes}</div>
+            ${obsHtml}
+        </div>`;
+            }).join('');
         }
 
-        // ===== PROCESSAR MÉTRICAS GERAIS =====
+        // ===== PRINT PDF =====
+        function printRecord(idx) {
+            const item = usageHistory[idx];
+            if (!item) return;
+
+            const pressoes = item.pressoesFinal?.length
+                ? item.pressoesFinal.map((p, i) => `<span class="print-chip">Cil. ${i + 1}: ${p ?? '—'} BAR</span>`).join('')
+                : `<span class="print-chip">Final: ${item.pressaoFinal ?? '—'} BAR</span>`;
+
+            const area = document.getElementById('print-area');
+            area.style.display = 'block';
+            area.innerHTML = `
+        <div class="print-header">
+            <img src="brasao-cbmmg.png" alt="Brasão CBMMG">
+            <div>
+                <h2>Corpo de Bombeiros Militar de Minas Gerais</h2>
+                <p>Sistema de Controle de Compressor e Cilindros — CBMMG</p>
+            </div>
+        </div>
+        <div class="print-title">📋 Relatório de Operação de Recarga</div>
+        <div class="print-row">
+            <div class="print-field"><div class="lbl">Militar Operador</div><div class="val">${escHtml(item.nome)}</div></div>
+            <div class="print-field"><div class="lbl">Matrícula</div><div class="val">${escHtml(item.matricula)}</div></div>
+            <div class="print-field"><div class="lbl">Tipo de Cilindro</div><div class="val">${escHtml(item.tipoCilindro)}</div></div>
+            <div class="print-field"><div class="lbl">Quantidade</div><div class="val">${item.qtdCilindros} cilindro(s)</div></div>
+            <div class="print-field"><div class="lbl">Início</div><div class="val">${formatDateBR(item.dataInicio)}</div></div>
+            <div class="print-field"><div class="lbl">Término</div><div class="val">${item.dataFim ? formatDateBR(item.dataFim) : '—'}</div></div>
+            <div class="print-field"><div class="lbl">Tempo Total de Operação</div><div class="val">${item.tempoTotal || '—'}</div></div>
+            <div class="print-field"><div class="lbl">Pressão Inicial do Lote</div><div class="val">${item.pressaoInicial ?? '—'} BAR</div></div>
+            <div class="print-field"><div class="lbl">Status</div><div class="val">${item.status === 'ativo' ? 'Em Uso' : 'Finalizado'}</div></div>
+        </div>
+        <div class="print-section-title">Pressões Finais por Cilindro</div>
+        <div style="margin-bottom:12px;">${pressoes}</div>
+        ${item.observacaoInicio ? `<div class="print-section-title">Observações de Entrada</div><div class="print-obs">${escHtml(item.observacaoInicio)}</div>` : ''}
+        ${item.observacaoFim ? `<div class="print-section-title">Observações de Saída</div><div class="print-obs">${escHtml(item.observacaoFim)}</div>` : ''}
+        <div class="print-footer">
+            Emitido em ${new Date().toLocaleString('pt-BR')} — BBZU Sistema de Gestão de Cilindros v2.6<br>
+            Desenvolvedor: Gabriel Souza Costa Ferreira | BM: 184.216-0
+        </div>`;
+
+            setTimeout(() => {
+                window.print();
+                area.style.display = 'none';
+            }, 150);
+        }
+
+        // ===== STATS =====
         function updateStats() {
-            const totalUsos = usageHistory.filter(u => u.status === 'finalizado').length;
-            const totalCilindros = usageHistory
-                .filter(u => u.status === 'finalizado')
-                .reduce((sum, u) => sum + (u.qtdCilindros || 0), 0);
-
-            const totalUsosEl = document.getElementById('totalUsos');
-            const totalCilindrosEl = document.getElementById('totalCilindros');
-            
-            if (totalUsosEl) totalUsosEl.textContent = totalUsos;
-            if (totalCilindrosEl) totalCilindrosEl.textContent = totalCilindros;
+            const total = usageHistory.filter(h => h.status === 'finalizado').length;
+            const cils = usageHistory.filter(h => h.status === 'finalizado').reduce((a, h) => a + (parseInt(h.qtdCilindros) || 0), 0);
+            const elT = document.getElementById('totalUsos');
+            const elC = document.getElementById('totalCilindros');
+            if (elT) elT.textContent = total;
+            if (elC) elC.textContent = cils;
         }
 
-        // ===== CHECKLIST INTERATOR (EVITA DOUBLE TRIGGER) =====
-        function toggleCheck(element, event) {
-            const checkbox = element.querySelector('input[type="checkbox"]');
-            if (!checkbox) return;
-
-            // Se o usuário clicar direto no elemento checkbox físico, evitamos prevenir o padrão
-            if (event && event.target === checkbox) {
-                element.classList.toggle('checked', checkbox.checked);
-                return;
-            }
-            if (event) event.preventDefault();
-
-            checkbox.checked = !checkbox.checked;
-            element.classList.toggle('checked', checkbox.checked);
+        // ===== CHECKLIST =====
+        function toggleCheck(el, event) {
+            if (event && event.target.tagName === 'INPUT') return;
+            el.classList.toggle('checked');
+            const cb = el.querySelector('input[type="checkbox"]');
+            if (cb) cb.checked = !cb.checked;
         }
 
-        // ===== CONTROLES DOS DIÁLOGOS DE CONFIRMAÇÃO =====
-        function showModal(message) {
-            const modalMessage = document.getElementById('modalMessage');
-            const modalConfirm = document.getElementById('modalConfirm');
-            if (modalMessage && modalConfirm) {
-                modalMessage.innerHTML = message;
-                modalConfirm.classList.add('show');
-            }
-        }
+        // ===== LIMPAR HISTÓRICO =====
+        document.getElementById('btnLimparHistorico')?.addEventListener('click', () => {
+            if (!confirm('Deseja apagar o histórico local? (dados na nuvem não serão excluídos)')) return;
+            usageHistory = [];
+            localStorage.removeItem('usageHistory');
+            updateHistory(); updateStats();
+        });
 
+        // ===== MODAL =====
+        function showModal(msg) {
+            document.getElementById('modalMessage').textContent = msg;
+            document.getElementById('modalConfirm').classList.add('show');
+        }
         function closeModal() {
-            const modalConfirm = document.getElementById('modalConfirm');
-            if (modalConfirm) {
-                modalConfirm.classList.remove('show');
+            document.getElementById('modalConfirm').classList.remove('show');
+        }
+
+        // ===== TOAST =====
+        function showToast(msg) {
+            let t = document.getElementById('toast-msg');
+            if (!t) {
+                t = document.createElement('div');
+                t.id = 'toast-msg';
+                t.style.cssText = `
+            position:fixed; bottom:70px; left:50%; transform:translateX(-50%);
+            background:#0f172a; color:#fff; padding:10px 20px; border-radius:50px;
+            font-size:0.82rem; font-weight:600; z-index:9999;
+            box-shadow:0 4px 20px rgba(0,0,0,0.25);
+            transition:opacity 0.3s; white-space:nowrap;`;
+                document.body.appendChild(t);
             }
+            t.textContent = msg;
+            t.style.opacity = '1';
+            clearTimeout(t._timeout);
+            t._timeout = setTimeout(() => { t.style.opacity = '0'; }, 3000);
         }
 
-        // ===== CONTROLES DO MODAL DE ALERTA DE DRENAGEM =====
-        function showDrainModal() {
-            const modalDrain = document.getElementById('modalDrain');
-            if (modalDrain) {
-                modalDrain.classList.add('show');
-            }
+        // ===== HELPERS =====
+        function escHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+        function formatDateBR(iso) {
+            const d = safeParseDate(iso);
+            if (!d) return '—';
+            return d.toLocaleDateString('pt-BR') + ' às ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
         }
 
-        function closeDrainModal() {
-            const modalDrain = document.getElementById('modalDrain');
-            if (modalDrain) {
-                modalDrain.classList.remove('show');
-            }
-            // Remove o lembrete piscando do painel
-            const reminder = document.getElementById('drainReminder');
-            if (reminder) {
-                reminder.classList.remove('show');
-            }
+        // ===== RESTAURAR SESSÃO ATIVA =====
+        const saved = localStorage.getItem('currentUsage');
+        if (saved) {
+            try {
+                currentUsage = JSON.parse(saved);
+                const qty = currentUsage?.qtdCilindros || 1;
+                renderCylinderPressureFields(qty);
+                startTime = safeParseDate(currentUsage.dataInicio)?.getTime() || Date.now();
+                totalPaused = 0;
+                isPaused = false;
+                updateTimerUI();
+                timerInterval = setInterval(() => { updateTimerUI(); checkDrainReminder(); }, 1000);
+                document.getElementById('startForm').style.display = 'none';
+                document.getElementById('timerCard').style.display = 'block';
+                document.getElementById('endForm').style.display = 'block';
+                updateUsageStatus();
+            } catch (e) { localStorage.removeItem('currentUsage'); }
         }
 
-        // ===== LIMPAR HISTÓRICO DE UTILIZAÇÕES LOCAL =====
-        function limparHistorico() {
-            if (confirm("Deseja realmente apagar o histórico de utilizações do aparelho? Essa ação removerá as informações de recarga exibidas neste celular/tablet.")) {
-                localStorage.removeItem('usageHistory');
-                usageHistory = [];
-                updateHistory();
-                updateStats();
-                showModal("Histórico local limpo com sucesso!");
-            }
-        }
+        // ===== INIT =====
+        loadHistoryFromSupabase();
+        updateUsageStatus();
 
-        // ===== RECUPERAR SESSÃO DE FORMA SEGURA =====
-        function restoreState() {
-            const savedUsage = localStorage.getItem('currentUsage');
-            const savedStartTime = localStorage.getItem('startTime');
-
-            if (savedUsage && savedStartTime) {
-                const parsedStart = safeParseDate(savedStartTime);
-                
-                if (parsedStart) {
-                    currentUsage = JSON.parse(savedUsage);
-                    startTime = parsedStart;
-
-                    updateStatusInUse();
-                    startTimer();
-                    startDrainReminder();
-
-                    document.getElementById('startForm').style.display = 'none';
-                    document.getElementById('endForm').style.display = 'block';
-                    document.getElementById('timerCard').style.display = 'block';
-                } else {
-                    // Limpeza caso o estado esteja corrompido
-                    localStorage.removeItem('currentUsage');
-                    localStorage.removeItem('startTime');
-                }
-            }
-        }
-
-        // Exposição global das funções do modal de drenagem
-        window.closeDrainModal = closeDrainModal;
-        window.showDrainModal = showDrainModal;
-
-        // ===== CARREGAMENTO DE PÁGINA =====
-        document.addEventListener('DOMContentLoaded', async () => {
-            console.log('Iniciando o Controle de Compressor...');
-            
-            // Vinculação do botão de limpar histórico
-            const btnLimpar = document.getElementById("btnLimparHistorico");
-            if (btnLimpar) {
-                btnLimpar.addEventListener("click", limparHistorico);
-            }
-            
-            await loadHistoryFromSupabase();
-            restoreState();
-        });
-    </script>
-
-    <!-- ========== SERVICE WORKER & PWA SYSTEM ========== -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then((registration) => {
-                        console.log('Service Worker registrado em: ', registration.scope);
-                    })
-                    .catch((error) => {
-                        console.error('Falha de Service Worker:', error);
-                    });
-            });
-        }
-
-        // ========== PWA INSTALADOR DIRETIVO ==========
-        let deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            showInstallButton();
-        });
-
-        function showInstallButton() {
-            const installBtn = document.createElement('button');
-            installBtn.id = 'installBtn';
-            installBtn.innerHTML = '<i class="fas fa-download"></i> Instalar App';
-            installBtn.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 24px;
-                background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-                color: white;
-                border: 1px solid var(--primary-dark);
-                border-radius: 50px;
-                font-size: 13px;
-                font-weight: bold;
-                font-family: inherit;
-                cursor: pointer;
-                box-shadow: 0 4px 15px rgba(190, 18, 60, 0.4);
-                z-index: 10000;
-                transition: transform 0.2s, box-shadow 0.2s;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            `;
-
-            installBtn.addEventListener('mouseenter', () => {
-                installBtn.style.transform = 'scale(1.05) translateY(-2px)';
-            });
-
-            installBtn.addEventListener('mouseleave', () => {
-                installBtn.style.transform = 'scale(1)';
-            });
-
-            installBtn.addEventListener('click', installPWA);
-            document.body.appendChild(installBtn);
-        }
-
-        async function installPWA() {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`Instalação PWA: ${outcome}`);
-            deferredPrompt = null;
-            const btn = document.getElementById('installBtn');
-            if (btn) btn.remove();
-        }
-
-        window.addEventListener('appinstalled', () => {
-            console.log('PWA configurado e instalado.');
-            deferredPrompt = null;
-            const btn = document.getElementById('installBtn');
-            if (btn) btn.remove();
-        });
     </script>
 </body>
 </html>
